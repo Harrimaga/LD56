@@ -34,6 +34,7 @@ func _process(delta: float) -> void:
 	
 	if path.size() == 0:
 		if task == null:
+			## TODO: Random small wander?
 			return
 		if task.origin != null:
 			path = [task.origin.global_position]
@@ -42,7 +43,7 @@ func _process(delta: float) -> void:
 	## Find path, do work
 	
 	if path_pointer >= path.size():
-		do_work()
+		do_work(delta)
 		
 		if task == null: return
 		
@@ -56,7 +57,7 @@ func _process(delta: float) -> void:
 		position = path[path_pointer]
 		path_pointer += 1
 
-func do_work():
+func do_work(delta : float):
 	if task == null: return
 	
 	if task.origin == null:
@@ -74,21 +75,30 @@ func do_work():
 			return
 				
 	if (position - task.destination.global_position).length() <= 0.1:
-		task.destination.destination_action(self)
+		task.destination.destination_action(self, delta)
 		
 		if task == null: return
 		
 		path = [task.origin.global_position if task.origin != null else temp_origin.global_position]
 	else:
-		if task.origin == null:
-			temp_origin.origin_action(self)
+		if task.origin == null and (position - temp_origin.global_position).length() <= 0.1:
+			temp_origin.origin_action(self, delta)
+			path = [task.destination.global_position]
+		elif task.origin != null and (position - task.origin.position).length() <= 0.1:
+			task.origin.origin_action(self, delta)
+			path = [task.destination.global_position]
 		else:
-			task.origin.origin_action(self)
-			
+			if inventory.size() == 0:
+				path = [task.origin.global_position if task.origin != null else temp_origin.global_position]
+			else:
+				if task.wood and inventory[0].type == CarryingResource.ResourceType.WOOD:
+					path = [task.destination.global_position]
+				else:
+					inventory.clear()
+					path = [task.origin.global_position if task.origin != null else temp_origin.global_position]
+		
 		if task == null: return
-		
-		path = [task.destination.global_position]
-		
+
 	path_pointer = 0
 	flip_h = path[path_pointer].x > position.x
 
@@ -102,4 +112,4 @@ func remove_from_inventory():
 	for resource in inventory:
 		task.destination.move_resource(resource)
 		
-	inventory = []
+	inventory.clear()

@@ -6,10 +6,13 @@ var hasWood : bool
 var hasStone : bool
 var hasBuilding : bool
 var building : Location
+var planned_building : Location.BuildingType
+var planned_tower : Location.TowerType
 
 var resources_needed_for_building : Array[int] = [0, 0]
 var time_to_build : float
 var is_being_built : bool
+var build_stage : int
 
 var task : TaskManager.Task
 
@@ -21,7 +24,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func origin_action(ant : Ant):
+func origin_action(ant : Ant, delta : float):
 	for i in range(ant.inventory_max):
 		ant.add_to_inventory(CarryingResource.new(CarryingResource.ResourceType.WOOD if hasWood else CarryingResource.ResourceType.STONE))
 	
@@ -33,6 +36,9 @@ func plan():
 	walkable = false
 	hasBuilding = true
 	is_being_built = true
+	build_stage = 0
+	
+	self_modulate = Color(0.5, 0.3, 0.1)
 	
 	if resources_needed_for_building[0] > 0:
 		task = TaskManager.add_task(null, self, -1, resources_needed_for_building[0], true)
@@ -41,18 +47,39 @@ func plan():
 	
 func plan_building():
 	resources_needed_for_building = [0, 9]
+	planned_building = GameflowManager.selected_building
 	plan()
 	
 func plan_tower():
 	resources_needed_for_building = [0, 9]
+	planned_tower = GameflowManager.selected_tower
+	time_to_build = 10
 	plan()
 	
-func destination_action(ant : Ant):
+func destination_action(ant : Ant, delta : float):
 	if is_being_built:
 		if resources_needed_for_building[0] > stockpile[0] or resources_needed_for_building[1] > stockpile[1]:
 			ant.remove_from_inventory()
-		else:
+		elif build_stage == 0:
 			TaskManager.remove_task(task)
+			
+			build_stage += 1
+			task = TaskManager.add_task(self, self, -1, resources_needed_for_building.reduce(func(a, n): return a+n, 0))
+		
+		elif build_stage == 1:
+			time_to_build -= delta
+			
+			if time_to_build <= 0:
+				TaskManager.remove_task(task)
+				
+				var b : Location
+				
+				if planned_tower != null:
+					b = GameflowManager.towers[planned_tower].instantiate()
+				else:
+					b = GameflowManager.buildings[planned_building].instantiate()
+
+				build(b)
 
 func setPos(p : Vector2):
 	position = p

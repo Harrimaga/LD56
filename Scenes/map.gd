@@ -28,7 +28,6 @@ func _ready() -> void:
 	
 	var tower : Location = tower_scene.instantiate()
 	build(tower, 4, 22)
-	tower.setPosition(Vector2(4, 22)*32)
 	
 	var mine : Location = mine_scene.instantiate()
 	build(mine, 50, 20)

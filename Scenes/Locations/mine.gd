@@ -13,10 +13,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	stockpile_label.text = "Stock: " + str(stockpile[1])
 	
-func destination_action(ant : Ant):
+func destination_action(ant : Ant, delta : float):
 	ant.remove_from_inventory()
 	
-func origin_action(ant : Ant):
+func origin_action(ant : Ant, delta : float):
 	while ant.add_to_inventory(CarryingResource.new(CarryingResource.ResourceType.STONE)):
 		stockpile[1] -= 1
 

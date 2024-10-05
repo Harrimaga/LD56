@@ -5,12 +5,12 @@ enum TowerType { BASIC, FLAK, OBSTACLE, BRIDGE }
 
 var stockpile : Array[int] = [0, 0]## Wood, Stone
 
-func origin_action(ant : Ant):
+func origin_action(ant : Ant, delta : float):
 	pass
 	
-func destination_action(ant : Ant):
+func destination_action(ant : Ant, delta : float):
 	pass
-	
+
 func get_resource_tile(wood : bool) -> Tile:
 	return get_node("/root/Main/Map").get_closest_resource(wood, position)
 

@@ -55,7 +55,6 @@ columns = 2
 
 [node name="BuildingButton" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons" instance=ExtResource("3_lm05u")]
 layout_mode = 2
-tower_type = 1
 
 [node name="BuildingButton2" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons" instance=ExtResource("3_lm05u")]
 layout_mode = 2

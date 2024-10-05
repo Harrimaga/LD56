@@ -50,13 +50,14 @@ func remove_task(task : Task):
 	while i >= 0:
 		if task_pool[i] == task:
 			for ant in task.worker_pool:
+				if ant == null: continue
 				ant.task = null
+				ant.temp_origin = null
 				ant.path = []
 				
 			worker_pool.append_array(task.worker_pool)
 			
-			task_pool[i] == task_pool.back()
-			task_pool.pop_back()
+			task_pool.remove_at(i)
 			break
 		i -= 1
 
