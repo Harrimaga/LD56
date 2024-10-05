@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5dwkebl4neo7"]
+[gd_scene load_steps=4 format=3 uid="uid://b5dwkebl4neo7"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_bc47k"]
 [ext_resource type="PackedScene" uid="uid://b2vbrkoh05sw7" path="res://Scenes/Map.tscn" id="1_dwtjv"]
+[ext_resource type="PackedScene" uid="uid://b6d6sgi28ynot" path="res://Scenes/mainHud.tscn" id="3_x5bow"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -39,5 +40,7 @@ size_flags_horizontal = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
+
+[node name="MainHud" parent="." instance=ExtResource("3_x5bow")]
 
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/Button" to="." method="_on_button_pressed"]

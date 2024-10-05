@@ -3,6 +3,18 @@ extends Node
 var worker_pool : Array[Ant]
 var task_pool : Array[Task]
 
+func get_ant_count() -> int:
+	var count = worker_pool.size()
+	for t in task_pool:
+		count += t.worker_pool.size()
+	return count
+	
+func get_task_capacity() -> int:
+	var count = 0
+	for t in task_pool:
+		count += t.capacity
+	return count
+
 func add_to_pool(ant : Ant):
 	worker_pool.push_back(ant)
 	

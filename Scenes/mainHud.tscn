@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6d6sgi28ynot"]
+
+[ext_resource type="Script" path="res://Scenes/main_hud.gd" id="1_n43i5"]
+
+[node name="MainHud" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_n43i5")
+
+[node name="Jobs" type="Label" parent="."]
+offset_left = 475.0
+offset_top = 1047.0
+offset_right = 782.0
+offset_bottom = 1074.0
+text = "Jobs: "
+
+[node name="Score" type="Label" parent="."]
+offset_left = 635.0
+offset_top = 1051.0
+offset_right = 942.0
+offset_bottom = 1078.0
+text = "Score:"
+
+[node name="Ants" type="Label" parent="."]
+offset_left = 195.0
+offset_top = 1050.0
+offset_right = 502.0
+offset_bottom = 1077.0
+text = "Ants: "
+
+[node name="Ants2" type="Label" parent="."]
+offset_left = 349.0
+offset_top = 1051.0
+offset_right = 656.0
+offset_bottom = 1078.0
+text = "Ants: "
+
+[node name="Health" type="Label" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 1050.0
+offset_right = 319.0
+offset_bottom = 1077.0
+text = "Health: 50"
