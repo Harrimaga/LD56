@@ -3,7 +3,7 @@ class_name Location extends Node2D
 enum BuildingType { MINE, WOOD, STOCKPILE, UNIVERSITY, AMMO }
 enum TowerType { BASIC, FLAK, OBSTACLE, BRIDGE }
 
-var stockpile : Array[int] = [0, 0]## Wood, Stone
+var stockpile : Array[int] = [0, 0, 0, 0] ## Wood, Stone, WoodAmmo, StoneAmmo
 
 func origin_action(ant : Ant, delta : float):
 	pass

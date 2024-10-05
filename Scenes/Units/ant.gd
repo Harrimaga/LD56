@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 	## Find path, do work
 	
 	if path_pointer >= path.size():
-		do_work(delta)
+		if !do_work(delta): return
 		
 		if task == null: return
 		
@@ -57,8 +57,8 @@ func _process(delta: float) -> void:
 		position = path[path_pointer]
 		path_pointer += 1
 
-func do_work(delta : float):
-	if task == null: return
+func do_work(delta : float) -> bool:
+	if task == null: return false
 	
 	if task.origin == null:
 		var closest : Location
@@ -72,35 +72,39 @@ func do_work(delta : float):
 		if closest != null:
 			temp_origin = closest
 		else:
-			return
-				
+			## Wait for new resources
+			return false
+	
 	if (position - task.destination.global_position).length() <= 0.1:
 		task.destination.destination_action(self, delta)
 		
-		if task == null: return
+		if task == null: return false
 		
 		path = [task.origin.global_position if task.origin != null else temp_origin.global_position]
 	else:
 		if task.origin == null and (position - temp_origin.global_position).length() <= 0.1:
-			temp_origin.origin_action(self, delta)
-			path = [task.destination.global_position]
+			if temp_origin.origin_action(self, delta):
+				path = [task.destination.global_position]
+				path_pointer = 0
 		elif task.origin != null and (position - task.origin.position).length() <= 0.1:
-			task.origin.origin_action(self, delta)
-			path = [task.destination.global_position]
+			if task.origin.origin_action(self, delta):
+				path = [task.destination.global_position]
+				path_pointer = 0
 		else:
 			if inventory.size() == 0:
 				path = [task.origin.global_position if task.origin != null else temp_origin.global_position]
 			else:
-				if task.wood and inventory[0].type == CarryingResource.ResourceType.WOOD:
+				if (task.wood and inventory[0].type == CarryingResource.ResourceType.WOOD) or (!task.wood and inventory[0].type == CarryingResource.ResourceType.STONE):
 					path = [task.destination.global_position]
 				else:
 					inventory.clear()
 					path = [task.origin.global_position if task.origin != null else temp_origin.global_position]
 		
-		if task == null: return
+		if task == null: return false
 
 	path_pointer = 0
 	flip_h = path[path_pointer].x > position.x
+	return true
 
 func add_to_inventory(resource : CarryingResource) -> bool:
 	if inventory.size() < inventory_max:

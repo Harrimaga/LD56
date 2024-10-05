@@ -24,9 +24,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func origin_action(ant : Ant, delta : float):
+func origin_action(ant : Ant, delta : float) -> bool:
 	for i in range(ant.inventory_max):
 		ant.add_to_inventory(CarryingResource.new(CarryingResource.ResourceType.WOOD if hasWood else CarryingResource.ResourceType.STONE))
+	return true
 	
 func build(p_building : Location):
 	building = p_building
