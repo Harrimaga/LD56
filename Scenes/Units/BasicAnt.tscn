@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cghofycs5pnm0"]
+
+[ext_resource type="Texture2D" uid="uid://fhdxapdf81dj" path="res://Assets/Textures/Pixel.png" id="1_wpuy5"]
+[ext_resource type="Script" path="res://Scenes/Units/basic_ant.gd" id="2_e886o"]
+
+[node name="BasicAnt" type="Sprite2D"]
+self_modulate = Color(0, 0, 0, 1)
+texture = ExtResource("1_wpuy5")
+script = ExtResource("2_e886o")

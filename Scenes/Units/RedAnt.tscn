@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0vjirb38e637"]
+
+[ext_resource type="Texture2D" uid="uid://fhdxapdf81dj" path="res://Assets/Textures/Pixel.png" id="1_17dye"]
+[ext_resource type="Script" path="res://Scenes/Units/red_ant.gd" id="1_u85yd"]
+
+[node name="RedAnt" type="Sprite2D"]
+self_modulate = Color(0.635977, 0, 0.0973, 1)
+texture = ExtResource("1_17dye")
+script = ExtResource("1_u85yd")
