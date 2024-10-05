@@ -27,6 +27,7 @@ func _ready() -> void:
 	GameflowManager.projectiles = $Projectiles
 	
 	var tower : Location = tower_scene.instantiate()
+	tower.is_tower = true
 	build(tower, 4, 22)
 	
 	var mine : Location = mine_scene.instantiate()
@@ -35,6 +36,8 @@ func _ready() -> void:
 	var mine2 : Location = mine_scene.instantiate()
 	build(mine2, 70, 2)
 	GameflowManager.stockpile_buildings.append(mine2)
+	var ammo : Location = GameflowManager.buildings[Location.BuildingType.AMMO].instantiate()
+	build(ammo, 60, 9)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

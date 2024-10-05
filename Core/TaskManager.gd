@@ -44,6 +44,9 @@ func add_task(origin : Location, destination : Location, capacity : int, resourc
 	task_pool.push_back(task)
 	
 	return task
+	
+func re_add_task(task : Task):
+	task_pool.push_back(task)
 
 func remove_task(task : Task):
 	var i = task_pool.size() - 1
@@ -54,6 +57,8 @@ func remove_task(task : Task):
 				ant.task = null
 				ant.temp_origin = null
 				ant.path = []
+				
+			task.worker_pool = []
 				
 			worker_pool.append_array(task.worker_pool)
 			

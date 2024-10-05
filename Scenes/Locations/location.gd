@@ -5,6 +5,8 @@ enum TowerType { BASIC, FLAK, OBSTACLE, BRIDGE }
 
 var stockpile : Array[int] = [0, 0, 0, 0] ## Wood, Stone, WoodAmmo, StoneAmmo
 
+var is_tower : bool
+
 func origin_action(ant : Ant, delta : float):
 	pass
 	

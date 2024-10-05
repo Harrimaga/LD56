@@ -15,9 +15,11 @@ var towers : Dictionary = {
 }
 
 var buildings : Dictionary = {
-	
+	Location.BuildingType.MINE : preload("res://Scenes/Locations/Mine.tscn"),
+	Location.BuildingType.AMMO : preload("res://Scenes/Locations/AmmoBuilding.tscn")
 }
 
 var TD_screen_active : bool = true
 
 var stockpile_buildings : Array[Location] = []
+var ammo_buildings : Array[Location] = []

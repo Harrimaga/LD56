@@ -80,6 +80,7 @@ layout_mode = 2
 
 [node name="BuildingButton2" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons" instance=ExtResource("3_ioc5v")]
 layout_mode = 2
+building_type = 4
 
 [node name="BuildingButton3" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons" instance=ExtResource("3_ioc5v")]
 layout_mode = 2

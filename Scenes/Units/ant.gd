@@ -59,27 +59,33 @@ func _process(delta: float) -> void:
 
 func do_work(delta : float) -> bool:
 	if task == null: return false
-	
+
 	if task.origin == null:
 		var closest : Location
 		var distance : float = INF
-		
-		for t in GameflowManager.stockpile_buildings:
-			if t.stockpile[0 if task.wood else 1] > 0 and (t.global_position - global_position).length_squared() < distance:
-				closest = t
-				distance = (t.global_position - global_position).length_squared()
-				
+
+		if task.destination.is_tower:
+			for t in GameflowManager.ammo_buildings:
+				if t.stockpile[2 if task.wood else 3] > 0 and (t.global_position - global_position).length_squared() < distance:
+					closest = t
+					distance = (t.global_position - global_position).length_squared()
+		else:
+			for t in GameflowManager.stockpile_buildings:
+				if t.stockpile[0 if task.wood else 1] > 0 and (t.global_position - global_position).length_squared() < distance:
+					closest = t
+					distance = (t.global_position - global_position).length_squared()
+
 		if closest != null:
 			temp_origin = closest
 		else:
 			## Wait for new resources
 			return false
-	
+
 	if (position - task.destination.global_position).length() <= 0.1:
 		task.destination.destination_action(self, delta)
-		
+
 		if task == null: return false
-		
+
 		path = [task.origin.global_position if task.origin != null else temp_origin.global_position]
 	else:
 		if task.origin == null and (position - temp_origin.global_position).length() <= 0.1:

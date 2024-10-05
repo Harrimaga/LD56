@@ -8,6 +8,7 @@ var hasBuilding : bool
 var building : Location
 var planned_building : Location.BuildingType
 var planned_tower : Location.TowerType
+var building_tower : bool = false
 
 var resources_needed_for_building : Array[int] = [0, 0]
 var time_to_build : float
@@ -49,11 +50,13 @@ func plan():
 func plan_building():
 	resources_needed_for_building = [0, 9]
 	planned_building = GameflowManager.selected_building
+	time_to_build = 20
 	plan()
 	
 func plan_tower():
 	resources_needed_for_building = [0, 9]
 	planned_tower = GameflowManager.selected_tower
+	building_tower = true
 	time_to_build = 10
 	plan()
 	
@@ -75,8 +78,9 @@ func destination_action(ant : Ant, delta : float):
 				
 				var b : Location
 				
-				if planned_tower != null:
+				if building_tower:
 					b = GameflowManager.towers[planned_tower].instantiate()
+					b.is_tower = true
 				else:
 					b = GameflowManager.buildings[planned_building].instantiate()
 

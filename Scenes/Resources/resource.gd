@@ -1,6 +1,6 @@
 class_name CarryingResource extends Node
 
-enum ResourceType {WOOD, STONE}
+enum ResourceType {WOOD, STONE, WOODAMMO, STONEAMMO}
 
 var type : ResourceType
 
