@@ -9,3 +9,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$Label.text = str(tower_type)
+
+func _on_pressed() -> void:
+	GameflowManager.selected_tower = tower_type

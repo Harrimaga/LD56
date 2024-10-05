@@ -35,13 +35,24 @@ func kill_ant(ant : Ant):
 				task.worker_pool.pop_back()
 				return
 	
-func add_task(origin : Location, destination : Location, capacity : int):
-	task_pool.push_back(Task.new(origin, destination, capacity))
+func add_task(origin : Location, destination : Location, capacity : int, resources : int = -1, wood : bool = false) -> Task:
+	
+	if capacity == -1:
+		capacity = resources / 2
+	
+	var task = Task.new(origin, destination, capacity, resources, wood)
+	task_pool.push_back(task)
+	
+	return task
 
 func remove_task(task : Task):
-	var i = task_pool.size()
+	var i = task_pool.size() - 1
 	while i >= 0:
 		if task_pool[i] == task:
+			for ant in task.worker_pool:
+				ant.task = null
+				ant.path = []
+				
 			worker_pool.append_array(task.worker_pool)
 			
 			task_pool[i] == task_pool.back()
@@ -53,22 +64,30 @@ func _process(delta: float) -> void:
 	for task in task_pool:
 		if worker_pool.size() <= 0: break
 
+		var resources_transported_in_request = 0
 		while worker_pool.size() > 0 and task.worker_pool.size() < task.capacity:
 			var ant : Ant = worker_pool.pop_back()
+			if task.resources > 0:
+				resources_transported_in_request += ant.inventory_max
 			ant.task = task
 			ant.age = ant.lifespan
-			ant.path = [task.origin.position]
-			ant.flip_h = ant.path[0].x > ant.position.x
 			task.worker_pool.push_back(ant)
+			
+			if resources_transported_in_request >= task.resources:
+				break
 
 class Task:
 	var origin : Location
 	var destination : Location
 	var capacity : int
+	var resources : int
+	var wood : bool
 	
 	var worker_pool : Array[Ant]
 	
-	func _init(p_origin : Location, p_destination : Location, p_capacity : int):
+	func _init(p_origin : Location, p_destination : Location, p_capacity : int, p_resources : int, p_wood : bool):
 		origin = p_origin
 		destination = p_destination
 		capacity = p_capacity
+		resources = p_resources
+		wood = p_wood

@@ -6,8 +6,6 @@ extends Control
 						   preload("res://Scenes/Units/RedAnt.tscn"), 
 						   preload("res://Scenes/Units/RedFlyingAnt.tscn")]
 
-var TD_screen_active = true
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,13 +18,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if !TD_screen_active and cam.position != Vector2(3200 - 960, 540):
+	if !GameflowManager.TD_screen_active and cam.position != Vector2(3200 - 960, 540):
 		cam.position = cam.position.move_toward(Vector2(3200 - 960, 540), 10000 * delta)
-	elif TD_screen_active and cam.position != Vector2(960, 540):
+	elif GameflowManager.TD_screen_active and cam.position != Vector2(960, 540):
 		cam.position = cam.position.move_toward(Vector2(960, 540), 10000 * delta)
 
 func _on_button_pressed() -> void:
-	TD_screen_active = !TD_screen_active
+	GameflowManager.TD_screen_active = !GameflowManager.TD_screen_active
 	if $CanvasLayer/HBoxContainer/Panel/HBoxContainer/Button.text == ">":
 		$CanvasLayer/HBoxContainer/Panel/HBoxContainer/Button.text = "<"
 		$CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons.visible = false

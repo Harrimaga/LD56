@@ -31,8 +31,10 @@ func _ready() -> void:
 	
 	var mine : Location = mine_scene.instantiate()
 	build(mine, 50, 20)
+	GameflowManager.stockpile_buildings.append(mine)
 	var mine2 : Location = mine_scene.instantiate()
 	build(mine2, 70, 2)
+	GameflowManager.stockpile_buildings.append(mine2)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -109,21 +111,21 @@ func loadMap(path : String) -> void:
 func build(building : Location, x : int, y : int):
 	getTile(x, y).build(building)
 	
-func get_closest_resource(wood : bool, position : Vector2) -> Tile:
+func get_closest_resource(wood : bool, p_position : Vector2) -> Tile:
 	
 	var closest : Tile = null
 	var distance : float = INF
 	
 	if wood:
 		for tile in wood_tiles:
-			var d = (tile.position - position).length_squared()
+			var d = (tile.position - p_position).length_squared()
 			
 			if d < distance:
 				closest = tile
 				distance = d
 	else:
 		for tile in stone_tiles:
-			var d = (tile.position - position).length_squared()
+			var d = (tile.position - p_position).length_squared()
 			
 			if d < distance:
 				closest = tile
