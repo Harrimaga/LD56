@@ -32,7 +32,7 @@ func setGroundTile() -> void:
 	hasStone = false
 	hasBuilding = false
 	path = false
-	self.modulate = Color(0.6, 1, 0.3)
+	self.self_modulate = Color(0.6, 1, 0.3)
 	pass
 
 func setPathTile() -> void:

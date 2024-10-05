@@ -4,6 +4,7 @@ extends Node2D
 @onready var enemy = preload("res://Scenes/Enemies/Enemy.tscn")
 @onready var mine_scene = preload("res://Scenes/Locations/Mine.tscn")
 @onready var tower_scene = preload("res://Scenes/Locations/BasicTower.tscn")
+@onready var hive_scene = preload("res://Scenes/Locations/Hive.tscn")
 
 var width : int
 var height : int
@@ -90,8 +91,9 @@ func loadMap(path : String) -> void:
 	
 	for y in range(1, lines.size()):
 		for x in range(lines[y].length()):
-			var t = tile.instantiate()
 			if lines[y][x] == '\r': continue
+			var t = tile.instantiate()
+			$Grid.add_child(t)
 			match lines[y][x]:
 				'.': t.setGroundTile()
 				'p': t.setPathTile()
@@ -103,8 +105,13 @@ func loadMap(path : String) -> void:
 					stone_tiles.append(t)
 				'b': t.setPathTile();beginPoint = Vector2(x, y - 1)
 				'e': t.setPathTile();goal = Vector2(x, y - 1)
+				'h': 
+					t.setGroundTile()
+					var hive = hive_scene.instantiate()
+					build(hive, x, y - 1)
+					
+					
 			t.setPos(Vector2(x*32, (y - 1) * 32))
-			$Grid.add_child(t)
 	
 func build(building : Location, x : int, y : int):
 	getTile(x, y).build(building)

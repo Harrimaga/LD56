@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://poe3q8t3tgmx"]
+
+[ext_resource type="Texture2D" uid="uid://fhdxapdf81dj" path="res://Assets/Textures/Pixel.png" id="1_m0wsk"]
+[ext_resource type="Script" path="res://Scenes/Locations/hive.gd" id="2_7n5nl"]
+
+[node name="Hive" type="Sprite2D"]
+modulate = Color(1, 0.827451, 0, 1)
+z_index = 1
+position = Vector2(-8, -8)
+scale = Vector2(3, 3)
+texture = ExtResource("1_m0wsk")
+offset = Vector2(8, 8)
+script = ExtResource("2_7n5nl")
