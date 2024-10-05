@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://dmubitt5fok5" path="res://Assets/Theme.tres" id="2_7nkky"]
 [ext_resource type="PackedScene" uid="uid://m4t27o2c25sw" path="res://Scenes/UI/BuildingButton.tscn" id="3_ioc5v"]
 [ext_resource type="PackedScene" uid="uid://bmusp61ec8j40" path="res://Scenes/UI/TowerButton.tscn" id="3_lm05u"]
-[ext_resource type="PackedScene" path="res://Scenes/mainHud.tscn" id="3_x5bow"]
+[ext_resource type="PackedScene" uid="uid://b6d6sgi28ynot" path="res://Scenes/mainHud.tscn" id="3_x5bow"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
