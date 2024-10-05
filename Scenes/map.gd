@@ -3,6 +3,7 @@ extends Node2D
 @onready var tile = preload("res://Scenes/Tiles/ground.tscn")
 @onready var enemy = preload("res://Scenes/Enemies/Enemy.tscn")
 @onready var mine_scene = preload("res://Scenes/Locations/Mine.tscn")
+@onready var tower_scene = preload("res://Scenes/Locations/BasicTower.tscn")
 
 var width : int
 var height : int
@@ -11,6 +12,8 @@ var beginPoint : Vector2
 var goal : Vector2
 var route : Array
 
+var timer = 0
+
 var stone_tiles : Array[Tile]
 var wood_tiles : Array[Tile]
 
@@ -18,9 +21,15 @@ var wood_tiles : Array[Tile]
 func _ready() -> void:
 	loadMap("res://Assets/Levels/lvl.txt")
 	calcEnemyPath()
-	GameflowManager.enemyPath = route
 	spawnEnemy()
-
+	GameflowManager.enemyPath = route
+	GameflowManager.enemyList = $Enemies
+	GameflowManager.projectiles = $Projectiles
+	
+	var tower : Location = tower_scene.instantiate()
+	build(tower, 4, 22)
+	tower.setPosition(Vector2(4, 22)*32)
+	
 	var mine : Location = mine_scene.instantiate()
 	build(mine, 50, 20)
 	var mine2 : Location = mine_scene.instantiate()

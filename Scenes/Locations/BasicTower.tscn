@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://daldt0s3j7pil"]
+
+[ext_resource type="Texture2D" uid="uid://fhdxapdf81dj" path="res://Assets/Textures/Pixel.png" id="1_7wde1"]
+[ext_resource type="Script" path="res://Scenes/Locations/basic_tower.gd" id="2_2ten8"]
+
+[node name="BasicTower" type="Sprite2D"]
+self_modulate = Color(0.154945, 0.222112, 0.236775, 1)
+scale = Vector2(2, 2)
+texture = ExtResource("1_7wde1")
+offset = Vector2(8, 8)
+script = ExtResource("2_2ten8")

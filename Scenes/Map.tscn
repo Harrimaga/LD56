@@ -8,3 +8,5 @@ script = ExtResource("1_fpwfb")
 [node name="Grid" type="Node2D" parent="."]
 
 [node name="Enemies" type="Node2D" parent="."]
+
+[node name="Projectiles" type="Node2D" parent="."]
