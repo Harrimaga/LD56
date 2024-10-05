@@ -3,9 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://fhdxapdf81dj" path="res://Assets/Textures/Pixel.png" id="1_oq34n"]
 [ext_resource type="Script" path="res://Scenes/Locations/mine.gd" id="1_vbqh6"]
 
-[node name="Mine" type="Sprite2D"]
-texture = ExtResource("1_oq34n")
+[node name="Mine" type="Node2D"]
+z_index = 1
 script = ExtResource("1_vbqh6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_oq34n")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -7.0
@@ -14,3 +17,12 @@ offset_right = 33.0
 offset_bottom = 11.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "M"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 10.0
+offset_top = -12.0
+offset_right = 169.0
+offset_bottom = 12.0
+bbcode_enabled = true
+text = "Stock: 0"

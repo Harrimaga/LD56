@@ -1,9 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0vjirb38e637"]
+[gd_scene load_steps=8 format=3 uid="uid://b0vjirb38e637"]
 
-[ext_resource type="Texture2D" uid="uid://fhdxapdf81dj" path="res://Assets/Textures/Pixel.png" id="1_17dye"]
+[ext_resource type="Texture2D" uid="uid://cvd8mm2pi46rl" path="res://Assets/Textures/WalkingAnt.png" id="1_5lf0e"]
 [ext_resource type="Script" path="res://Scenes/Units/red_ant.gd" id="1_u85yd"]
 
-[node name="RedAnt" type="Sprite2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo34q"]
+atlas = ExtResource("1_5lf0e")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85fuy"]
+atlas = ExtResource("1_5lf0e")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw750"]
+atlas = ExtResource("1_5lf0e")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sb2a"]
+atlas = ExtResource("1_5lf0e")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ju7c4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uo34q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85fuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw750")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sb2a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="RedAnt" type="AnimatedSprite2D"]
 self_modulate = Color(0.635977, 0, 0.0973, 1)
-texture = ExtResource("1_17dye")
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ju7c4")
+autoplay = "default"
+frame_progress = 0.995555
 script = ExtResource("1_u85yd")
