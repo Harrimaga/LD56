@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4lfxjd8eggr3"]
+
+[ext_resource type="Texture2D" uid="uid://fhdxapdf81dj" path="res://Assets/Textures/Pixel.png" id="1_bqq20"]
+[ext_resource type="Script" path="res://Scenes/Tiles/ground.gd" id="2_xpwiw"]
+
+[node name="Ground" type="Sprite2D"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_bqq20")
+offset = Vector2(8, 8)
+script = ExtResource("2_xpwiw")
