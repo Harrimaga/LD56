@@ -27,7 +27,7 @@ func shoot() -> bool:
 	var target : Enemy = null
 	for e in GameflowManager.enemyList.get_children():
 		if pos.distance_to(e.position) < range:
-			if target == null or e.futher(target):
+			if target == null or e.further(target):
 				target = e;
 	
 	if target != null:

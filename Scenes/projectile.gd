@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 	maxDistance -= speed*delta
 	
 	for e in GameflowManager.enemyList.get_children():
-		if position.distance_to(e.position) < 48:
+		if position.distance_to(e.position) < 24:
 			e.health -= 1
 			if e.health <= 0:
 				e.queue_free();

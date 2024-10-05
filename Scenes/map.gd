@@ -12,12 +12,14 @@ var beginPoint : Vector2
 var goal : Vector2
 var route : Array
 
+var timer = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	loadMap("res://Assets/Levels/lvl.txt")
 	calcEnemyPath()
-	GameflowManager.enemyPath = route
 	spawnEnemy()
+	GameflowManager.enemyPath = route
 	GameflowManager.enemyList = $Enemies
 	GameflowManager.projectiles = $Projectiles
 	
