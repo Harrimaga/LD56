@@ -5,7 +5,5 @@
 
 [node name="BasicTower" type="Sprite2D"]
 self_modulate = Color(0.154945, 0.222112, 0.236775, 1)
-scale = Vector2(2, 2)
 texture = ExtResource("1_7wde1")
-offset = Vector2(8, 8)
 script = ExtResource("2_2ten8")
