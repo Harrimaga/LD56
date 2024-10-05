@@ -24,7 +24,7 @@ func setPosition(p : Vector2) -> void:
 	pos = p
 
 func shoot() -> bool:
-	var target : Enemy = null
+	var target = null
 	for e in GameflowManager.enemyList.get_children():
 		if pos.distance_to(e.position) < range:
 			if target == null or e.further(target):

@@ -1,9 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctd5mb516l1jo"]
+[gd_scene load_steps=8 format=3 uid="uid://ctd5mb516l1jo"]
 
-[ext_resource type="Texture2D" uid="uid://fhdxapdf81dj" path="res://Assets/Textures/Pixel.png" id="1_doyn8"]
+[ext_resource type="Texture2D" uid="uid://b6aym7yu45jr8" path="res://Assets/Textures/FlyingAnt.png" id="1_chuu2"]
 [ext_resource type="Script" path="res://Scenes/Units/flying_ant.gd" id="1_ijvi8"]
 
-[node name="FlyingAnt" type="Sprite2D"]
-self_modulate = Color(0.412152, 0.412152, 0.412152, 1)
-texture = ExtResource("1_doyn8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_lc1qx"]
+atlas = ExtResource("1_chuu2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6lgn"]
+atlas = ExtResource("1_chuu2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65o7o"]
+atlas = ExtResource("1_chuu2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utw0v"]
+atlas = ExtResource("1_chuu2")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_teu7x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lc1qx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6lgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65o7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utw0v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 40.0
+}]
+
+[node name="FlyingAnt" type="AnimatedSprite2D"]
+self_modulate = Color(0, 0, 0, 1)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_teu7x")
+autoplay = "default"
+frame_progress = 0.477449
 script = ExtResource("1_ijvi8")

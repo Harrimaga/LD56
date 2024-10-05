@@ -1,6 +1,15 @@
-class_name Location extends Sprite2D
+class_name Location extends Node2D
 
-var stockpile : Array[int] ## Wood, Stone
+var stockpile : Array[int] = [0, 0]## Wood, Stone
+
+func origin_action(ant : Ant):
+	pass
+	
+func destination_action(ant : Ant):
+	pass
+	
+func get_resource_tile(wood : bool) -> Tile:
+	return get_node("/root/Main/Map").get_closest_resource(wood, position)
 
 func move_resource(resource : CarryingResource):
 	match resource.type:

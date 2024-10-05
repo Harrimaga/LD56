@@ -6,8 +6,6 @@ extends Control
 						   preload("res://Scenes/Units/RedAnt.tscn"), 
 						   preload("res://Scenes/Units/RedFlyingAnt.tscn")]
 
-var ants : Array[Ant]
-
 var TD_screen_active = true
 
 
@@ -15,12 +13,10 @@ var TD_screen_active = true
 func _ready() -> void:
 	cam.make_current()
 	
-	ants = []
-
-	var ant : Ant = ant_scenes[1].instantiate()
-	ant.path = [Vector2(100, 100), Vector2(1820, 100), Vector2(1820, 980), Vector2(100, 980)]
-	ants.append(ant)
-	add_child(ant)
+	for i in range(30):
+		var ant : Ant = ant_scenes.pick_random().instantiate()
+		TaskManager.add_to_pool(ant)
+		add_child(ant)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

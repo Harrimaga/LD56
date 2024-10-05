@@ -6,5 +6,4 @@
 [node name="Ground" type="Sprite2D"]
 scale = Vector2(2, 2)
 texture = ExtResource("1_bqq20")
-offset = Vector2(8, 8)
 script = ExtResource("2_xpwiw")

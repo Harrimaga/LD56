@@ -1,4 +1,4 @@
-class_name Tile extends Sprite2D
+class_name Tile extends Location
 
 var walkable : bool
 var path : bool
@@ -14,6 +14,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+func origin_action(ant : Ant):
+	for i in range(ant.inventory_max):
+		ant.add_to_inventory(CarryingResource.new(CarryingResource.ResourceType.WOOD if hasWood else CarryingResource.ResourceType.STONE))
 	
 func build(p_building):
 	building = p_building

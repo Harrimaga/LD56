@@ -14,6 +14,9 @@ var route : Array
 
 var timer = 0
 
+var stone_tiles : Array[Tile]
+var wood_tiles : Array[Tile]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	loadMap("res://Assets/Levels/lvl.txt")
@@ -28,6 +31,8 @@ func _ready() -> void:
 	
 	var mine : Location = mine_scene.instantiate()
 	build(mine, 50, 20)
+	var mine2 : Location = mine_scene.instantiate()
+	build(mine2, 70, 2)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -90,8 +95,12 @@ func loadMap(path : String) -> void:
 			match lines[y][x]:
 				'.': t.setGroundTile()
 				'p': t.setPathTile()
-				'w': t.setWoodTile()
-				's': t.setStoneTile()
+				'w': 
+					t.setWoodTile()
+					wood_tiles.append(t)
+				's': 
+					t.setStoneTile()
+					stone_tiles.append(t)
 				'b': t.setPathTile();beginPoint = Vector2(x, y - 1)
 				'e': t.setPathTile();goal = Vector2(x, y - 1)
 			t.setPos(Vector2(x*32, (y - 1) * 32))
@@ -99,6 +108,28 @@ func loadMap(path : String) -> void:
 	
 func build(building : Location, x : int, y : int):
 	getTile(x, y).build(building)
+	
+func get_closest_resource(wood : bool, position : Vector2) -> Tile:
+	
+	var closest : Tile = null
+	var distance : float = INF
+	
+	if wood:
+		for tile in wood_tiles:
+			var d = (tile.position - position).length_squared()
+			
+			if d < distance:
+				closest = tile
+				distance = d
+	else:
+		for tile in stone_tiles:
+			var d = (tile.position - position).length_squared()
+			
+			if d < distance:
+				closest = tile
+				distance = d
+
+	return closest
 
 
 var wave : int = 0
