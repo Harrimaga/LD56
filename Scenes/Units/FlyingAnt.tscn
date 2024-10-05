@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctd5mb516l1jo"]
+
+[ext_resource type="Texture2D" uid="uid://fhdxapdf81dj" path="res://Assets/Textures/Pixel.png" id="1_doyn8"]
+[ext_resource type="Script" path="res://Scenes/Units/flying_ant.gd" id="1_ijvi8"]
+
+[node name="FlyingAnt" type="Sprite2D"]
+self_modulate = Color(0.412152, 0.412152, 0.412152, 1)
+texture = ExtResource("1_doyn8")
+script = ExtResource("1_ijvi8")
