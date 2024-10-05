@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5dwkebl4neo7"]
+[gd_scene load_steps=7 format=3 uid="uid://b5dwkebl4neo7"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_bc47k"]
 [ext_resource type="PackedScene" uid="uid://b2vbrkoh05sw7" path="res://Scenes/Map.tscn" id="1_dwtjv"]
+[ext_resource type="PackedScene" uid="uid://b6d6sgi28ynot" path="res://Scenes/mainHud.tscn" id="3_x5bow"]
 [ext_resource type="Theme" uid="uid://dmubitt5fok5" path="res://Assets/Theme.tres" id="2_7nkky"]
 [ext_resource type="PackedScene" uid="uid://m4t27o2c25sw" path="res://Scenes/UI/BuildingButton.tscn" id="3_ioc5v"]
 [ext_resource type="PackedScene" uid="uid://bmusp61ec8j40" path="res://Scenes/UI/TowerButton.tscn" id="3_lm05u"]
@@ -95,5 +96,9 @@ text = ">"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
+
+[node name="MainHud" parent="." instance=ExtResource("3_x5bow")]
+
+[node name="MainHud" parent="." instance=ExtResource("3_x5bow")]
 
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/Panel/HBoxContainer/Button" to="." method="_on_button_pressed"]
