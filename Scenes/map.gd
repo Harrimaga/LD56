@@ -3,6 +3,7 @@ extends Node2D
 @onready var tile = preload("res://Scenes/Tiles/ground.tscn")
 @onready var enemy = preload("res://Scenes/Enemies/Enemy.tscn")
 @onready var mine_scene = preload("res://Scenes/Locations/Mine.tscn")
+@onready var tower_scene = preload("res://Scenes/Locations/BasicTower.tscn")
 
 var width : int
 var height : int
@@ -17,6 +18,12 @@ func _ready() -> void:
 	calcEnemyPath()
 	GameflowManager.enemyPath = route
 	spawnEnemy()
+	GameflowManager.enemyList = $Enemies
+	GameflowManager.projectiles = $Projectiles
+	
+	var tower : Location = tower_scene.instantiate()
+	build(tower, 4, 22)
+	tower.setPosition(Vector2(4, 22)*32)
 	
 	var mine : Location = mine_scene.instantiate()
 	build(mine, 50, 20)
