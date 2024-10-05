@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func setPos() -> void:
 	if pathIndex >= GameflowManager.enemyPath.size()-1:
-		position = GameflowManager.enemyPath[GameflowManager.enemyPath.size()-1] * Vector2(32, 32)	
+		position = GameflowManager.enemyPath[GameflowManager.enemyPath.size()-1] * Vector2(32, 32)
 		GameflowManager.health -= 1
 		print(GameflowManager.health)
 		queue_free()
