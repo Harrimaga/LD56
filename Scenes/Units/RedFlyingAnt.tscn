@@ -44,5 +44,5 @@ self_modulate = Color(0.980127, 0.234297, 0.218166, 1)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_30mke")
 autoplay = "default"
-frame_progress = 0.0679516
+frame_progress = 0.859605
 script = ExtResource("1_1pykk")

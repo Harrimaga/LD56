@@ -27,11 +27,11 @@ func _process(delta: float) -> void:
 
 func _on_button_pressed() -> void:
 	TD_screen_active = !TD_screen_active
-	if $CanvasLayer/HBoxContainer/Button.text == ">":
-		$CanvasLayer/HBoxContainer/Button.text = "<"
-		$CanvasLayer/HBoxContainer/MarginContainer2.visible = true
-		$CanvasLayer/HBoxContainer/MarginContainer.visible = false
+	if $CanvasLayer/HBoxContainer/Panel/HBoxContainer/Button.text == ">":
+		$CanvasLayer/HBoxContainer/Panel/HBoxContainer/Button.text = "<"
+		$CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons.visible = false
+		$CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons.visible = true
 	else:
-		$CanvasLayer/HBoxContainer/Button.text = ">"
-		$CanvasLayer/HBoxContainer/MarginContainer2.visible = false
-		$CanvasLayer/HBoxContainer/MarginContainer.visible = true
+		$CanvasLayer/HBoxContainer/Panel/HBoxContainer/Button.text = ">"
+		$CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons.visible = true
+		$CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons.visible = false

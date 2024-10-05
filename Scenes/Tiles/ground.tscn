@@ -1,9 +1,42 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4lfxjd8eggr3"]
+[gd_scene load_steps=8 format=3 uid="uid://d4lfxjd8eggr3"]
 
 [ext_resource type="Texture2D" uid="uid://fhdxapdf81dj" path="res://Assets/Textures/Pixel.png" id="1_bqq20"]
 [ext_resource type="Script" path="res://Scenes/Tiles/ground.gd" id="2_xpwiw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3q7gd"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljs60"]
+bg_color = Color(0, 0, 0, 0.470588)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iw584"]
+bg_color = Color(0, 0, 0, 0.207843)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhfbl"]
+bg_color = Color(0, 0, 0, 0.470588)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uwa3v"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 0)
 
 [node name="Ground" type="Sprite2D"]
 scale = Vector2(2, 2)
 texture = ExtResource("1_bqq20")
 script = ExtResource("2_xpwiw")
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_3q7gd")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ljs60")
+theme_override_styles/hover = SubResource("StyleBoxFlat_iw584")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qhfbl")
+theme_override_styles/normal = SubResource("StyleBoxFlat_uwa3v")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

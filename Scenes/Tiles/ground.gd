@@ -61,3 +61,7 @@ func setStoneTile() -> void:
 	path = false
 	self.modulate = Color(0.35, 0.35, 0.4)
 	pass
+
+
+func _on_button_pressed() -> void:
+	print("Pressed")

@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5dwkebl4neo7"]
+[gd_scene load_steps=7 format=3 uid="uid://b5dwkebl4neo7"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_bc47k"]
 [ext_resource type="PackedScene" uid="uid://b2vbrkoh05sw7" path="res://Scenes/Map.tscn" id="1_dwtjv"]
-[ext_resource type="PackedScene" uid="uid://b6d6sgi28ynot" path="res://Scenes/mainHud.tscn" id="3_x5bow"]
+[ext_resource type="Theme" uid="uid://dmubitt5fok5" path="res://Assets/Theme.tres" id="2_7nkky"]
+[ext_resource type="PackedScene" uid="uid://m4t27o2c25sw" path="res://Scenes/UI/BuildingButton.tscn" id="3_ioc5v"]
+[ext_resource type="PackedScene" uid="uid://bmusp61ec8j40" path="res://Scenes/UI/TowerButton.tscn" id="3_lm05u"]
+[ext_resource type="PackedScene" path="res://Scenes/mainHud.tscn" id="3_x5bow"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -11,9 +14,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_bc47k")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainHud" parent="CanvasLayer" instance=ExtResource("3_x5bow")]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -21,26 +27,76 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
-[node name="Button" type="Button" parent="CanvasLayer/HBoxContainer"]
-custom_minimum_size = Vector2(50, 0)
+[node name="Panel" type="Panel" parent="CanvasLayer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-text = ">"
+theme = ExtResource("2_7nkky")
 
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TowerButtons" type="GridContainer" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+columns = 2
+
+[node name="BuildingButton" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons" instance=ExtResource("3_lm05u")]
+layout_mode = 2
+tower_type = 1
+
+[node name="BuildingButton2" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons" instance=ExtResource("3_lm05u")]
+layout_mode = 2
+tower_type = 1
+
+[node name="BuildingButton3" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons" instance=ExtResource("3_lm05u")]
+layout_mode = 2
+tower_type = 1
+
+[node name="BuildingButton4" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons" instance=ExtResource("3_lm05u")]
+layout_mode = 2
+tower_type = 1
+
+[node name="BuildingButtons" type="GridContainer" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer"]
 visible = false
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
+size_flags_vertical = 4
+columns = 2
+
+[node name="BuildingButton" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons" instance=ExtResource("3_ioc5v")]
+layout_mode = 2
+
+[node name="BuildingButton2" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons" instance=ExtResource("3_ioc5v")]
+layout_mode = 2
+
+[node name="BuildingButton3" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons" instance=ExtResource("3_ioc5v")]
+layout_mode = 2
+
+[node name="BuildingButton4" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons" instance=ExtResource("3_ioc5v")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme = ExtResource("2_7nkky")
+text = ">"
 
 [node name="Map" parent="." instance=ExtResource("1_dwtjv")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
 
-[node name="MainHud" parent="." instance=ExtResource("3_x5bow")]
-
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Panel/HBoxContainer/Button" to="." method="_on_button_pressed"]
