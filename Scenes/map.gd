@@ -18,7 +18,6 @@ var timer = 0
 func _ready() -> void:
 	loadMap("res://Assets/Levels/lvl.txt")
 	calcEnemyPath()
-	spawnEnemy()
 	GameflowManager.enemyPath = route
 	GameflowManager.enemyList = $Enemies
 	GameflowManager.projectiles = $Projectiles
@@ -30,13 +29,10 @@ func _ready() -> void:
 	var mine : Location = mine_scene.instantiate()
 	build(mine, 50, 20)
 
-func spawnEnemy() -> void:
-	var e = enemy.instantiate()
-	$Enemies.add_child(e)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	wave_update(delta)
 	
 func calcEnemyPath() -> void:
 	var prev := Vector2(-1, -1)
@@ -103,3 +99,38 @@ func loadMap(path : String) -> void:
 	
 func build(building : Location, x : int, y : int):
 	getTile(x, y).build(building)
+
+
+var wave : int = 0
+var timerToNextWave : float = 15
+var spawnTimer : float = 0
+var spawnNextTimer : float = 0
+var interval : float = 0
+var type : int = 0
+var difficulty : float = 1
+
+func wave_update(delta : float):
+	timerToNextWave -= delta
+	if timerToNextWave <= 0:
+		spawnTimer = 5 + 0.2*wave
+		timerToNextWave = spawnTimer + max(6 - 0.1*wave, 2)
+		interval = max(0.99 - 0.01*wave, 0.1)
+		difficulty = 1 + wave/20.0
+		difficulty *= difficulty
+		
+		wave += 1
+		
+		
+	spawnTimer -= delta
+	if spawnTimer > 0:
+		spawnNextTimer -= delta
+		if spawnNextTimer < 0:
+			spawnEnemy()
+			spawnNextTimer = interval
+	
+	
+
+func spawnEnemy() -> void:
+	var e = enemy.instantiate()
+	e.health = int(difficulty)
+	$Enemies.add_child(e)

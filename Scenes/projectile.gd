@@ -26,6 +26,8 @@ func _process(delta: float) -> void:
 			e.health -= 1
 			if e.health <= 0:
 				e.queue_free();
+				GameflowManager.score += 1
+				print("Score: " + str(GameflowManager.score))
 			queue_free();
 			return
 	
