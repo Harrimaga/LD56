@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var tile = preload("res://Scenes/Tiles/ground.tscn")
+@onready var mine_scene = preload("res://Scenes/Locations/Mine.tscn")
 
 var width : int
 var height : int
@@ -8,13 +9,16 @@ var height : int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	loadMap("res://Assets/Levels/lvl.txt")
+	
+	var mine : Location = mine_scene.instantiate()
+	build(mine, 50, 20)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 	
-func getTile(x : int, y : int) -> Sprite2D:
+func getTile(x : int, y : int) -> Tile:
 	return $Grid.get_child(x + y * width)
 
 func loadMap(path : String) -> void:
@@ -38,5 +42,5 @@ func loadMap(path : String) -> void:
 			t.setPos(Vector2(x*32, (y - 1) * 32))
 			$Grid.add_child(t)
 	
-	
-	
+func build(building : Location, x : int, y : int):
+	getTile(x, y).build(building)

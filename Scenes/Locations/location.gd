@@ -1,4 +1,4 @@
-class_name Location extends Node2D
+class_name Location extends Sprite2D
 
 var stockpile : Array[int] ## Wood, Stone
 

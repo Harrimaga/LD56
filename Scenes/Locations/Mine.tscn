@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://clfq7i1t0xcj0"]
+
+[ext_resource type="Texture2D" uid="uid://fhdxapdf81dj" path="res://Assets/Textures/Pixel.png" id="1_oq34n"]
+[ext_resource type="Script" path="res://Scenes/Locations/mine.gd" id="1_vbqh6"]
+
+[node name="Mine" type="Sprite2D"]
+texture = ExtResource("1_oq34n")
+script = ExtResource("1_vbqh6")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -7.0
+offset_top = -12.0
+offset_right = 33.0
+offset_bottom = 11.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "M"
