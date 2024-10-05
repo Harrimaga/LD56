@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn7r48wxqxlvf"]
+
+[ext_resource type="Texture2D" uid="uid://fhdxapdf81dj" path="res://Assets/Textures/Pixel.png" id="1_d5d3g"]
+[ext_resource type="Script" path="res://Scenes/Enemies/enemy.gd" id="2_kuvfi"]
+
+[node name="Enemy" type="Sprite2D"]
+modulate = Color(1, 0.262745, 0.623529, 1)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_d5d3g")
+offset = Vector2(11, 11)
+script = ExtResource("2_kuvfi")
