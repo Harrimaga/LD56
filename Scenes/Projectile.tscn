@@ -5,5 +5,4 @@
 
 [node name="Projectile" type="Sprite2D"]
 texture = ExtResource("1_i2wtb")
-offset = Vector2(16, 16)
 script = ExtResource("2_hcmrg")

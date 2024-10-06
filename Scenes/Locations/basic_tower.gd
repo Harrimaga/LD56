@@ -16,8 +16,9 @@ func destination_action(ant : Ant, delta : float):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	timer -= delta
-	if timer <= 0:
+	if timer <= 0 and stockpile[3] > 0:
 		if shoot():
+			stockpile[3] -= 1
 			timer = cooldown
 
 func shoot() -> bool:
@@ -29,7 +30,7 @@ func shoot() -> bool:
 	
 	if target != null:
 		var projectile = pro_scene.instantiate()
-		projectile.start((target.position - global_position).normalized(), 2000, range*1.5, global_position)
+		projectile.start((target.position - global_position).normalized(), 2000, range, global_position, target)
 		GameflowManager.projectiles.add_child(projectile)
 		
 	return target != null
