@@ -35,7 +35,7 @@ func shoot() -> bool:
 	
 	if target != null:
 		var projectile = pro_scene.instantiate()
-		projectile.start((target.position - global_position).normalized(), 2000, range, global_position, target, damage)
+		projectile.start((target.position - global_position).normalized(), 2000, global_position.distance_to(target.position), global_position, target, damage)
 		GameflowManager.projectiles.add_child(projectile)
 		
 	if target != null:
@@ -47,4 +47,6 @@ func perform_upgrade() -> void:
 	upgraded += 1
 	damage += 10
 	range += 16
-	cooldown *= 0.9
+	cooldown *= 0.85
+	
+	
