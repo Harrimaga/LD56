@@ -26,7 +26,6 @@ func _process(delta: float) -> void:
 	if maxDistance < 0:
 		target.health -= 1
 		if target.health <= 0:
-			target.queue_free();
+			target.die()
 			GameflowManager.score += 1
-			print("Score: " + str(GameflowManager.score))
 		queue_free();

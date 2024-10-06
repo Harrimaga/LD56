@@ -11,7 +11,7 @@ var spawn_interval = 3
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	## Starting resources:
-	stockpile = [10, 10, 0, 25]
+	stockpile = [20, 20, 0, 25]
 	GameflowManager.stockpile_buildings.append(self)
 	GameflowManager.ammo_buildings.append(self)
 	
