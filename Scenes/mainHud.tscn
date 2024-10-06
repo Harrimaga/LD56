@@ -8,6 +8,7 @@ anchors_preset = 0
 script = ExtResource("1_n43i5")
 
 [node name="Jobs" type="Label" parent="."]
+layout_mode = 0
 offset_left = 475.0
 offset_top = 1047.0
 offset_right = 782.0
@@ -15,13 +16,23 @@ offset_bottom = 1074.0
 text = "Jobs: "
 
 [node name="Score" type="Label" parent="."]
+layout_mode = 0
 offset_left = 635.0
 offset_top = 1051.0
 offset_right = 942.0
 offset_bottom = 1078.0
 text = "Score:"
 
+[node name="Research" type="Label" parent="."]
+layout_mode = 0
+offset_left = 867.0
+offset_top = 1051.0
+offset_right = 1174.0
+offset_bottom = 1078.0
+text = "Research:"
+
 [node name="Ants" type="Label" parent="."]
+layout_mode = 0
 offset_left = 195.0
 offset_top = 1050.0
 offset_right = 502.0
@@ -29,6 +40,7 @@ offset_bottom = 1077.0
 text = "Ants: "
 
 [node name="Ants2" type="Label" parent="."]
+layout_mode = 0
 offset_left = 349.0
 offset_top = 1051.0
 offset_right = 656.0

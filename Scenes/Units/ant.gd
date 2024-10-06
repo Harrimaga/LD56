@@ -32,7 +32,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	## Lifespan update
 	if task != null:
-		age -= delta
+		pass
+		#age -= delta
 	## TODO: Death
 	
 	if path.size() == 0:
@@ -99,10 +100,11 @@ func do_work(delta : float) -> bool:
 			## Nothing to do
 			return false
 
-	if (position - task.destination.global_position).length() <= 0.1:
+	if (position - task.destination.global_position).length() <= 0.1 and (task.destination == task.origin or inventory.size() > 0):
 		task.destination.destination_action(self, delta)
 
-		if task == null: return false
+		if task == null: 
+			return false
 
 		path = [task.origin.global_position if task.origin != null else temp_origin.global_position]
 	else:
@@ -124,7 +126,8 @@ func do_work(delta : float) -> bool:
 					inventory.clear()
 					path = [task.origin.global_position if task.origin != null else temp_origin.global_position]
 		
-		if task == null: return false
+		if task == null: 
+			return false
 
 	path_pointer = 0
 	flip_h = path[path_pointer].x > position.x

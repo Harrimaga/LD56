@@ -13,3 +13,4 @@ func _process(delta: float) -> void:
 	$Ants2.text = "Ants total: " + str(TaskManager.get_ant_count()) 
 	$Score.text = "Score: " + str(GameflowManager.score)
 	$Jobs.text = "Jobs: " + str(TaskManager.get_task_capacity())
+	$Research.text = "Research: " + str(GameflowManager.research)

@@ -6,6 +6,7 @@ var projectiles : Node2D
 
 var health : int = 50
 var score : int = 0
+var research : int = 0
 
 var selected_building : Location.BuildingType
 var selected_tower : Location.TowerType
