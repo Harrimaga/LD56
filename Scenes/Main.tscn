@@ -19,8 +19,6 @@ script = ExtResource("1_bc47k")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MainHud" parent="CanvasLayer" instance=ExtResource("3_x5bow")]
-
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,9 +92,39 @@ layout_mode = 2
 theme = ExtResource("2_7nkky")
 text = ">"
 
+[node name="MainHud" parent="CanvasLayer" instance=ExtResource("3_x5bow")]
+
+[node name="MainMenu" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1920.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MainMenu"]
+layout_mode = 0
+offset_left = -1927.0
+offset_top = -7.0
+offset_right = 3.0
+offset_bottom = 1078.0
+color = Color(0, 0, 0, 1)
+
+[node name="start" type="Button" parent="CanvasLayer/MainMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.391
+offset_left = -1168.0
+offset_top = 415.0
+offset_right = -768.0
+offset_bottom = 240.72
+text = "Start
+"
+
 [node name="Map" parent="." instance=ExtResource("1_dwtjv")]
+visible = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
 
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/Panel/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/start" to="." method="_on_start_pressed"]

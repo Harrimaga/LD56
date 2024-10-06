@@ -12,6 +12,7 @@ var height : int
 var beginPoint : Vector2
 var goal : Vector2
 var route : Array
+var started : bool = false
 
 var timer = 0
 
@@ -45,7 +46,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	wave_update(delta)
+	if started:
+		wave_update(delta)
 	
 func calcEnemyPath() -> void:
 	var prev := Vector2(-1, -1)

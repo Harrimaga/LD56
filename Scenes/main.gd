@@ -11,10 +11,6 @@ extends Control
 func _ready() -> void:
 	cam.make_current()
 	
-	for i in range(30):
-		var ant : Ant = ant_scenes.pick_random().instantiate()
-		TaskManager.add_to_pool(ant)
-		add_child(ant)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -33,3 +29,15 @@ func _on_button_pressed() -> void:
 		$CanvasLayer/HBoxContainer/Panel/HBoxContainer/Button.text = ">"
 		$CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons.visible = true
 		$CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons.visible = false
+
+
+func _on_start_pressed() -> void:
+	$CanvasLayer/MainMenu.visible = false
+	$Map.visible = true
+	$Map.started = true
+	
+	for i in range(30):
+		var ant : Ant = ant_scenes.pick_random().instantiate()
+		TaskManager.add_to_pool(ant)
+		add_child(ant)
+	
