@@ -11,7 +11,8 @@ var selected_building : Location.BuildingType
 var selected_tower : Location.TowerType
 
 var towers : Dictionary = {
-	Location.TowerType.BASIC : preload("res://Scenes/Locations/BasicTower.tscn")
+	Location.TowerType.BASIC : preload("res://Scenes/Locations/BasicTower.tscn"),
+	Location.TowerType.UPGRADE : null
 }
 
 var buildings : Dictionary = {

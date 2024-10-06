@@ -2,9 +2,12 @@ extends Location
 
 @onready var pro_scene = preload("res://Scenes/Projectile.tscn")
 
-var cooldown : float = 1.5
+var cooldown : float = 1.2
 var timer : float = 0
-var range : float = 160
+var range : float = 176
+var damage : float = 50
+
+var upgraded : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,7 +34,15 @@ func shoot() -> bool:
 	
 	if target != null:
 		var projectile = pro_scene.instantiate()
-		projectile.start((target.position - global_position).normalized(), 2000, range, global_position, target)
+		projectile.start((target.position - global_position).normalized(), 2000, range, global_position, target, damage)
 		GameflowManager.projectiles.add_child(projectile)
 		
 	return target != null
+
+func perform_upgrade() -> void:
+	upgraded += 1
+	damage += 10
+	range += 16
+	cooldown *= 0.9
+	
+	

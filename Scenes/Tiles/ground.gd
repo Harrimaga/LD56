@@ -14,6 +14,7 @@ var resources_needed_for_building : Array[int] = [0, 0]
 var time_to_build : float
 var is_being_built : bool
 var build_stage : int
+var upgraded : bool = false
 
 var task : TaskManager.Task
 
@@ -62,6 +63,17 @@ func plan_tower():
 	time_to_build = 10
 	plan()
 	
+func plan_upgrade():
+	var mod = 1 + building.upgraded/4
+	planned_tower = GameflowManager.selected_tower
+	building_tower = true
+	time_to_build = 10*mod
+	
+	mod *= mod
+	resources_needed_for_building = [10*mod, 10*mod]
+	
+	plan()
+	
 func destination_action(ant : Ant, delta : float):
 	if is_being_built:
 		if resources_needed_for_building[0] > stockpile[0] or resources_needed_for_building[1] > stockpile[1]:
@@ -80,7 +92,13 @@ func destination_action(ant : Ant, delta : float):
 				
 				var b : Location
 				
-				if building_tower:
+				if planned_tower == Location.TowerType.UPGRADE:
+					if not upgraded:
+						building.perform_upgrade()
+						upgraded = true
+					return
+				
+				elif building_tower:
 					b = GameflowManager.towers[planned_tower].instantiate()
 					b.is_tower = true
 				else:
@@ -132,7 +150,7 @@ func setStoneTile() -> void:
 	normal_color = self.self_modulate
 
 func _on_button_pressed() -> void:
-	if !hasBuilding and walkable:
+	if !hasBuilding and walkable and GameflowManager.selected_tower != Location.TowerType.UPGRADE:
 		## Build!
 		
 		if GameflowManager.TD_screen_active and GameflowManager.selected_tower != null:
@@ -140,3 +158,10 @@ func _on_button_pressed() -> void:
 			
 		if !GameflowManager.TD_screen_active and GameflowManager.selected_building != null:
 			plan_building()
+	
+	if hasBuilding and building != null and building.is_tower and GameflowManager.selected_tower == Location.TowerType.UPGRADE:
+		if GameflowManager.TD_screen_active:
+			plan_upgrade()
+			upgraded = false
+	
+	

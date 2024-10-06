@@ -1,7 +1,7 @@
 class_name Location extends Node2D
 
 enum BuildingType { MINE, WOOD, STOCKPILE, UNI, AMMO }
-enum TowerType { BASIC, FLAK, OBSTACLE, BRIDGE }
+enum TowerType { BASIC, FLAK, OBSTACLE, UPGRADE }
 
 var stockpile : Array[int] = [0, 0, 0, 0] ## Wood, Stone, WoodAmmo, StoneAmmo
 

@@ -197,5 +197,5 @@ func wave_update(delta : float):
 
 func spawnEnemy() -> void:
 	var e = enemy.instantiate()
-	e.health = int(difficulty)
+	e.health = int(80 * difficulty)
 	$Enemies.add_child(e)
