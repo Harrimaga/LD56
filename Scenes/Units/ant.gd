@@ -61,6 +61,10 @@ func _process(delta: float) -> void:
 
 func do_work(delta : float) -> bool:
 	if task == null: return false
+	
+	if task.origin == null and task.destination == null:
+		task = null
+		return false
 
 	if task.origin == null:
 		var closest : Location

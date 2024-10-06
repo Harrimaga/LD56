@@ -50,6 +50,9 @@ func _on_start_pressed() -> void:
 	GameflowManager.stockpile_buildings = []
 	GameflowManager.hive._ready()
 	
+	for p in $Map/Projectiles.get_children():
+		p.queue_free()
+	
 	$Map.removeBuildings()
 	TaskManager.reset()
 	
