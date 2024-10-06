@@ -84,6 +84,12 @@ func destination_action(ant : Ant, delta : float):
 			resources_needed_for_building[0] -= stockpile[0]
 			resources_needed_for_building[1] -= stockpile[1]
 			stockpile = [0, 0, 0, 0]
+			if resources_needed_for_building[0] <= 0 and resources_needed_for_building[1] <= 0:
+				TaskManager.remove_task(task)
+
+				build_stage += 1
+				task = TaskManager.add_task(self, self, -1, total_resources_for_building.reduce(func(a, n): return a+n, 0))
+				
 		elif build_stage == 0:
 			TaskManager.remove_task(task)
 			
@@ -111,6 +117,7 @@ func destination_action(ant : Ant, delta : float):
 					b = GameflowManager.buildings[planned_building].instantiate()
 
 				build(b)
+				self_modulate = Color(0.6, 1, 0.3)
 
 func setPos(p : Vector2):
 	position = p

@@ -1,8 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://dp0t7flbqg57d"]
 
-[ext_resource type="Texture2D" uid="uid://fhdxapdf81dj" path="res://Assets/Textures/Pixel.png" id="1_i2wtb"]
+[ext_resource type="Texture2D" uid="uid://chn5nscvqgbrd" path="res://Assets/Textures/projectile.png" id="1_0yypu"]
 [ext_resource type="Script" path="res://Scenes/projectile.gd" id="2_hcmrg"]
 
 [node name="Projectile" type="Sprite2D"]
-texture = ExtResource("1_i2wtb")
+scale = Vector2(2, 2)
+texture = ExtResource("1_0yypu")
 script = ExtResource("2_hcmrg")

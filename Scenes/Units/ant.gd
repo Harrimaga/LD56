@@ -77,9 +77,14 @@ func do_work(delta : float) -> bool:
 					distance = (t.global_position - global_position).length_squared()
 		else:
 			for t in GameflowManager.stockpile_buildings:
-				if t.stockpile[0 if task.wood else 1] > 0 and (t.global_position - global_position).length_squared() < distance:
-					closest = t
-					distance = (t.global_position - global_position).length_squared()
+				if task.wood:
+					if t.stockpile[0] > 0 and (t.global_position - global_position).length_squared() < distance:
+						closest = t
+						distance = (t.global_position - global_position).length_squared()
+				else:
+					if t.stockpile[1] > 0 and (t.global_position - global_position).length_squared() < distance:
+						closest = t
+						distance = (t.global_position - global_position).length_squared()
 
 		if closest != null:
 			temp_origin = closest
