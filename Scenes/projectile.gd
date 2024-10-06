@@ -4,12 +4,14 @@ extends Sprite2D
 var direction : Vector2
 var speed : float
 var maxDistance : float
+var target : Enemy
 
-func start(dir, s, dist, pos):
+func start(dir, s, dist, pos, e):
 	direction = dir
 	speed = s
 	maxDistance = dist
 	position = pos
+	target = e
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,15 +23,10 @@ func _process(delta: float) -> void:
 	position += direction*speed*delta
 	maxDistance -= speed*delta
 	
-	for e in GameflowManager.enemyList.get_children():
-		if position.distance_to(e.position) < 24:
-			e.health -= 1
-			if e.health <= 0:
-				e.queue_free();
-				GameflowManager.score += 1
-				print("Score: " + str(GameflowManager.score))
-			queue_free();
-			return
-	
 	if maxDistance < 0:
-		queue_free()
+		target.health -= 1
+		if target.health <= 0:
+			target.queue_free();
+			GameflowManager.score += 1
+			print("Score: " + str(GameflowManager.score))
+		queue_free();
