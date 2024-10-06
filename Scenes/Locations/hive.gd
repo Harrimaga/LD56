@@ -7,6 +7,9 @@ extends Location
 
 var timer : float = 3
 var spawn_interval = 3
+var luck = -4
+var upgrade_cost = 20
+var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -38,9 +41,31 @@ func origin_action(ant : Ant, delta : float):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	$Button.visible = GameflowManager.research >= upgrade_cost
 	timer -= delta
 	if timer <= 0:
-		var ant : Ant = ant_scenes.pick_random().instantiate()
+		var i = rng.randi()%4
+		if luck < 0:
+			for d in range(-luck):
+				var j = rng.randi()%4
+				if j < i:
+					i = j
+		else:
+			for d in range(-luck):
+				var j = rng.randi()%4
+				if j > i:
+					i = j
+		
+		var ant : Ant = ant_scenes[i].instantiate()
 		TaskManager.add_to_pool(ant)
 		get_parent().get_parent().get_parent().add_child(ant)
 		timer = spawn_interval
+
+
+func _on_button_pressed() -> void:
+	GameflowManager.research -= upgrade_cost
+	
+	luck += 1
+	spawn_interval *= 0.8
+	
+	upgrade_cost *= 2

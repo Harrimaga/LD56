@@ -11,3 +11,14 @@ scale = Vector2(3, 3)
 texture = ExtResource("1_m0wsk")
 offset = Vector2(8, 8)
 script = ExtResource("2_7n5nl")
+
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_left = -5.33333
+offset_top = -13.3333
+offset_right = 69.6667
+offset_bottom = 17.6667
+scale = Vector2(0.333, 0.333)
+text = "Upgrade"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

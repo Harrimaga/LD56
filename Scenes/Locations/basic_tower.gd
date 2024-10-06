@@ -43,6 +43,6 @@ func perform_upgrade() -> void:
 	upgraded += 1
 	damage += 10
 	range += 16
-	cooldown *= 0.9
+	cooldown *= 0.85
 	
 	

@@ -68,6 +68,11 @@ func plan_tower():
 	
 func plan_upgrade():
 	var mod = 1 + building.upgraded/4
+	
+	if GameflowManager.research < 10 * mod * mod:
+		return
+	GameflowManager.research -= 10 * mod * mod
+	
 	planned_tower = GameflowManager.selected_tower
 	building_tower = true
 	time_to_build = 10*mod
