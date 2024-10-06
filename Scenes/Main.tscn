@@ -64,7 +64,7 @@ tower_type = 1
 
 [node name="BuildingButton4" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons" instance=ExtResource("3_lm05u")]
 layout_mode = 2
-tower_type = 1
+tower_type = 3
 
 [node name="BuildingButtons" type="GridContainer" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer"]
 visible = false
