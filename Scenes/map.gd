@@ -85,6 +85,14 @@ func calcEnemyPath() -> void:
 			continue
 		break
 	
+func removeBuildings() -> void:
+	for tile in $Grid.get_children():
+		if tile.building != GameflowManager.hive:
+			tile.building = null
+		tile.building_tower = false
+		tile.task = null
+		tile.self_modulate = tile.normal_color
+	
 func getTile(x : int, y : int) -> Tile:
 	if x < 0 or x >= width or y < 0 or y >= height: return null
 	return $Grid.get_child(x + y * width)
@@ -148,13 +156,23 @@ func get_closest_resource(wood : bool, p_position : Vector2) -> Tile:
 	return closest
 
 
-var wave : int = 0
-var timerToNextWave : float = 10
-var spawnTimer : float = 0
-var spawnNextTimer : float = 0
-var interval : float = 0
-var type : int = 0
-var difficulty : float = 1
+var wave : int
+var timerToNextWave : float
+var spawnTimer : float
+var spawnNextTimer : float
+var interval : float
+var type : int
+var difficulty : float
+
+func set_wave_params():
+	wave = 0
+	timerToNextWave = 60
+	spawnTimer = 0
+	spawnNextTimer = 0
+	interval = 0
+	type = 0
+	difficulty = 1
+	
 
 func wave_update(delta : float):
 	timerToNextWave -= delta

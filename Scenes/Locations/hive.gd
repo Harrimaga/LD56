@@ -12,8 +12,11 @@ var spawn_interval = 3
 func _ready() -> void:
 	## Starting resources:
 	stockpile = [40, 40, 0, 25]
+	GameflowManager.hive = self
 	GameflowManager.stockpile_buildings.append(self)
 	GameflowManager.ammo_buildings.append(self)
+	
+	
 	
 func origin_action(ant : Ant, delta : float):
 	if ant.task.destination.is_tower:

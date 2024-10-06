@@ -18,6 +18,8 @@ var build_stage : int
 
 var task : TaskManager.Task
 
+var normal_color : Color
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -102,7 +104,8 @@ func setGroundTile() -> void:
 	hasBuilding = false
 	path = false
 	self.self_modulate = Color(0.6, 1, 0.3)
-	pass
+	
+	normal_color = self.self_modulate
 
 func setPathTile() -> void:
 	walkable = false
@@ -111,7 +114,8 @@ func setPathTile() -> void:
 	hasBuilding = false
 	path = true
 	self.modulate = Color(0.8, 0.6, 0.1)
-	pass
+	
+	normal_color = self.self_modulate
 
 func setWoodTile() -> void:
 	walkable = false
@@ -120,7 +124,8 @@ func setWoodTile() -> void:
 	hasBuilding = false
 	path = false
 	self.modulate = Color(0.1, 0.8, 0.25)
-	pass
+	
+	normal_color = self.self_modulate
 
 func setStoneTile() -> void:
 	walkable = false
@@ -129,7 +134,8 @@ func setStoneTile() -> void:
 	hasBuilding = false
 	path = false
 	self.modulate = Color(0.35, 0.35, 0.4)
-	pass
+	
+	normal_color = self.self_modulate
 
 func _on_button_pressed() -> void:
 	if !hasBuilding and walkable:

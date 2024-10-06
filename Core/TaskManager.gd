@@ -85,6 +85,18 @@ func _process(delta: float) -> void:
 			if resources_transported_in_request >= task.resources:
 				break
 
+func reset() -> void:
+	for ant in worker_pool:
+		ant.queue_free()
+	
+	for task in task_pool:
+		for ant in task.worker_pool:
+			ant.queue_free()
+	
+	task_pool = []
+	worker_pool = []
+		
+
 class Task:
 	var origin : Location
 	var destination : Location
