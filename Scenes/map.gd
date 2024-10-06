@@ -149,7 +149,7 @@ func get_closest_resource(wood : bool, p_position : Vector2) -> Tile:
 
 
 var wave : int = 0
-var timerToNextWave : float = 60
+var timerToNextWave : float = 10
 var spawnTimer : float = 0
 var spawnNextTimer : float = 0
 var interval : float = 0

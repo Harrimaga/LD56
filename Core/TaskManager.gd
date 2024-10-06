@@ -50,17 +50,20 @@ func re_add_task(task : Task):
 
 func remove_task(task : Task):
 	var i = task_pool.size() - 1
+	print(worker_pool.size())
 	while i >= 0:
 		if task_pool[i] == task:
+			print(task.worker_pool.size())
 			for ant in task.worker_pool:
 				if ant == null: continue
 				ant.task = null
 				ant.temp_origin = null
 				ant.path = []
 				
-			task.worker_pool = []
 				
-			worker_pool.append_array(task.worker_pool)
+			worker_pool.append_array(task.worker_pool.duplicate(true))
+			print(worker_pool.size())
+			task.worker_pool = []
 			
 			task_pool.remove_at(i)
 			break

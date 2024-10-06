@@ -11,7 +11,7 @@ var spawn_interval = 3
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	## Starting resources:
-	stockpile = [20, 20, 0, 25]
+	stockpile = [40, 40, 0, 25]
 	GameflowManager.stockpile_buildings.append(self)
 	GameflowManager.ammo_buildings.append(self)
 	
@@ -36,8 +36,8 @@ func origin_action(ant : Ant, delta : float):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	timer -= delta
-	if timer <= 0:
-		var ant : Ant = ant_scenes.pick_random().instantiate()
-		TaskManager.add_to_pool(ant)
-		get_parent().get_parent().get_parent().add_child(ant)
-		timer = spawn_interval
+	#if timer <= 0:
+		#var ant : Ant = ant_scenes.pick_random().instantiate()
+		#TaskManager.add_to_pool(ant)
+		#get_parent().get_parent().get_parent().add_child(ant)
+		#timer = spawn_interval
