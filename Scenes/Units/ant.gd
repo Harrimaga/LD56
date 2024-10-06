@@ -32,9 +32,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	## Lifespan update
 	if task != null:
-		pass
-		#age -= delta
-	## TODO: Death
+		age -= delta
 	
 	if path.size() == 0:
 		if task == null:

@@ -78,13 +78,15 @@ layout_mode = 2
 
 [node name="BuildingButton2" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons" instance=ExtResource("3_ioc5v")]
 layout_mode = 2
-building_type = 4
+building_type = 1
 
 [node name="BuildingButton3" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons" instance=ExtResource("3_ioc5v")]
 layout_mode = 2
+building_type = 3
 
 [node name="BuildingButton4" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons" instance=ExtResource("3_ioc5v")]
 layout_mode = 2
+building_type = 4
 
 [node name="Button" type="Button" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)

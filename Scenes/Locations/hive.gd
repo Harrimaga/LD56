@@ -39,8 +39,8 @@ func origin_action(ant : Ant, delta : float):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	timer -= delta
-	#if timer <= 0:
-		#var ant : Ant = ant_scenes.pick_random().instantiate()
-		#TaskManager.add_to_pool(ant)
-		#get_parent().get_parent().get_parent().add_child(ant)
-		#timer = spawn_interval
+	if timer <= 0:
+		var ant : Ant = ant_scenes.pick_random().instantiate()
+		TaskManager.add_to_pool(ant)
+		get_parent().get_parent().get_parent().add_child(ant)
+		timer = spawn_interval

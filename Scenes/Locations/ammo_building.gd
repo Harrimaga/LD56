@@ -13,8 +13,8 @@ var active_tasks : Array[bool] = [false, false]
 func _ready() -> void:
 	timer = time_per_ammo
 	
-	wood_task = TaskManager.add_task(null, self, capacity, -1, false)
-	stone_task = TaskManager.add_task(null, self, capacity, -1, true)
+	wood_task = TaskManager.add_task(null, self, capacity, -1, true)
+	stone_task = TaskManager.add_task(null, self, capacity, -1, false)
 	
 	active_tasks = [true, true]
 	
@@ -23,10 +23,10 @@ func _ready() -> void:
 func destination_action(ant : Ant, delta : float):
 	ant.remove_from_inventory()
 	
-	if stockpile[0] > 50:
+	if stockpile[0] >= 50:
 		TaskManager.remove_task(wood_task)
 		active_tasks[0] = false
-	if stockpile[1] > 50:
+	if stockpile[1] >= 50:
 		TaskManager.remove_task(stone_task)
 		active_tasks[1] = false
 		

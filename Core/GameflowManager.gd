@@ -17,6 +17,7 @@ var towers : Dictionary = {
 
 var buildings : Dictionary = {
 	Location.BuildingType.MINE : preload("res://Scenes/Locations/Mine.tscn"),
+	Location.BuildingType.WOOD : preload("res://Scenes/Locations/Wood.tscn"),
 	Location.BuildingType.AMMO : preload("res://Scenes/Locations/AmmoBuilding.tscn"),
 	Location.BuildingType.UNI : preload("res://Scenes/Locations/University.tscn")
 }
