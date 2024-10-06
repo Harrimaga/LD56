@@ -80,6 +80,21 @@ func do_work(delta : float) -> bool:
 		else:
 			## Wait for new resources
 			return false
+			
+	if task.destination == null:
+		var closest : Location
+		var distance : float = INF
+		
+		for u in GameflowManager.universities:
+			if (u.global_position - global_position).length_squared() < distance:
+				distance = (u.global_position - global_position).length_squared()
+				closest = u
+		
+		if closest != null:
+			task.destination = closest
+		else:
+			## Nothing to do
+			return false
 
 	if (position - task.destination.global_position).length() <= 0.1:
 		task.destination.destination_action(self, delta)

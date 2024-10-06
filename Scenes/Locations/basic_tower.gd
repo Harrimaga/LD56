@@ -24,9 +24,10 @@ func _process(delta: float) -> void:
 func shoot() -> bool:
 	var target = null
 	for e in GameflowManager.enemyList.get_children():
-		if global_position.distance_to(e.position) < range:
-			if target == null or e.further(target):
-				target = e;
+		if !e.dead:
+			if global_position.distance_to(e.position) < range:
+				if target == null or e.further(target):
+					target = e;
 	
 	if target != null:
 		var projectile = pro_scene.instantiate()

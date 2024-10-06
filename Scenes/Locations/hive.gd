@@ -12,7 +12,7 @@ var spawn_interval = 3
 func _ready() -> void:
 	## Starting resources:
 	GameflowManager.hive = self
-	stockpile = [10, 10, 0, 25]
+	stockpile = [20, 20, 0, 25]
 	GameflowManager.stockpile_buildings.append(self)
 	GameflowManager.ammo_buildings.append(self)
 	

@@ -1,6 +1,6 @@
 class_name Location extends Node2D
 
-enum BuildingType { MINE, WOOD, STOCKPILE, UNIVERSITY, AMMO }
+enum BuildingType { MINE, WOOD, STOCKPILE, UNI, AMMO }
 enum TowerType { BASIC, FLAK, OBSTACLE, BRIDGE }
 
 var stockpile : Array[int] = [0, 0, 0, 0] ## Wood, Stone, WoodAmmo, StoneAmmo
@@ -26,6 +26,8 @@ func move_resource(resource : CarryingResource):
 			stockpile[2] += 1
 		CarryingResource.ResourceType.STONEAMMO:
 			stockpile[3] += 1
+		CarryingResource.ResourceType.BODY:
+			stockpile[4] += 1
 
 func remove_resource(type : CarryingResource.ResourceType) -> CarryingResource:
 	match type:
