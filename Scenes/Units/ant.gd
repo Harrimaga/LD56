@@ -23,7 +23,10 @@ func _ready() -> void:
 	inventory = []
 	age = lifespan
 	
-	position = Vector2(randf_range(0, 1920), randf_range(0, 1080))
+	var hivePos = GameflowManager.hive.global_position - Vector2(64, 64)
+	
+	
+	position = Vector2(randf_range(hivePos.x, hivePos.x + 32*7), randf_range(hivePos.y, hivePos.y + 32*7))
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
