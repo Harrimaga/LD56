@@ -9,6 +9,9 @@ var range : float = 160
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	TaskManager.add_task(null, self, 5, -1, false)
+	
+func destination_action(ant : Ant, delta : float):
+	ant.remove_from_inventory()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

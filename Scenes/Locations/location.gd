@@ -22,6 +22,10 @@ func move_resource(resource : CarryingResource):
 			stockpile[0] += 1
 		CarryingResource.ResourceType.STONE:
 			stockpile[1] += 1
+		CarryingResource.ResourceType.WOODAMMO:
+			stockpile[2] += 1
+		CarryingResource.ResourceType.STONEAMMO:
+			stockpile[3] += 1
 
 func remove_resource(type : CarryingResource.ResourceType) -> CarryingResource:
 	match type:

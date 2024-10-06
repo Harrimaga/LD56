@@ -27,18 +27,18 @@ func _ready() -> void:
 	GameflowManager.enemyList = $Enemies
 	GameflowManager.projectiles = $Projectiles
 	
-	var tower : Location = tower_scene.instantiate()
-	tower.is_tower = true
-	build(tower, 4, 22)
+	#var tower : Location = tower_scene.instantiate()
+	#tower.is_tower = true
+	#build(tower, 4, 22)
 	
-	var mine : Location = mine_scene.instantiate()
-	build(mine, 50, 20)
-	GameflowManager.stockpile_buildings.append(mine)
-	var mine2 : Location = mine_scene.instantiate()
-	build(mine2, 70, 2)
-	GameflowManager.stockpile_buildings.append(mine2)
-	var ammo : Location = GameflowManager.buildings[Location.BuildingType.AMMO].instantiate()
-	build(ammo, 60, 9)
+	#var mine : Location = mine_scene.instantiate()
+	#build(mine, 50, 20)
+	#GameflowManager.stockpile_buildings.append(mine)
+	#var mine2 : Location = mine_scene.instantiate()
+	#build(mine2, 70, 2)
+	#GameflowManager.stockpile_buildings.append(mine2)
+	#var ammo : Location = GameflowManager.buildings[Location.BuildingType.AMMO].instantiate()
+	#build(ammo, 60, 9)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -146,7 +146,7 @@ func get_closest_resource(wood : bool, p_position : Vector2) -> Tile:
 
 
 var wave : int = 0
-var timerToNextWave : float = 15
+var timerToNextWave : float = 60
 var spawnTimer : float = 0
 var spawnNextTimer : float = 0
 var interval : float = 0
