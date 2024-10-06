@@ -94,6 +94,42 @@ text = ">"
 
 [node name="MainHud" parent="CanvasLayer" instance=ExtResource("3_x5bow")]
 
+[node name="GameOver" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 3840.0
+offset_right = 3840.0
+offset_bottom = 1080.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GameOver"]
+layout_mode = 0
+offset_left = -3841.0
+offset_top = -7.0
+offset_right = -1911.0
+offset_bottom = 1078.0
+color = Color(0, 0, 0, 1)
+
+[node name="start" type="Button" parent="CanvasLayer/GameOver"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.391
+offset_left = -3088.0
+offset_top = 535.0
+offset_right = -2688.0
+offset_bottom = 360.72
+text = "Restart"
+
+[node name="Score" type="Label" parent="CanvasLayer/GameOver"]
+layout_mode = 0
+offset_left = -3084.0
+offset_top = 298.0
+offset_right = -2702.0
+offset_bottom = 441.0
+text = "Test text
+"
+horizontal_alignment = 1
+
 [node name="MainMenu" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
@@ -127,4 +163,5 @@ visible = false
 position = Vector2(960, 540)
 
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/Panel/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOver/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/start" to="." method="_on_start_pressed"]

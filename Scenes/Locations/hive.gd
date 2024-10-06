@@ -11,9 +11,12 @@ var spawn_interval = 3
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	## Starting resources:
+	GameflowManager.hive = self
 	stockpile = [10, 10, 0, 25]
 	GameflowManager.stockpile_buildings.append(self)
 	GameflowManager.ammo_buildings.append(self)
+	
+	
 	
 func origin_action(ant : Ant, delta : float):
 	if ant.task.destination.is_tower:

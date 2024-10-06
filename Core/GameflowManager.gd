@@ -23,3 +23,5 @@ var TD_screen_active : bool = true
 
 var stockpile_buildings : Array[Location] = []
 var ammo_buildings : Array[Location] = []
+
+var hive : Location
