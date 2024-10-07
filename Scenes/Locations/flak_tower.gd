@@ -1,7 +1,5 @@
 extends Location
 
-var projectile_scene
-@onready var pro_texture = preload("res://Assets/Textures/Carryables/WoodAmmo.png")
 @onready var sprite : AnimatedSprite2D = $Sprite
 
 var cooldown : float = 1.2
@@ -16,7 +14,6 @@ var task_added : bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	projectile_scene = load("res://Scenes/Projectile.tscn")
 	task = TaskManager.add_task(null, self, 10, -1, true)
 	
 func destination_action(ant : Ant, task : TaskManager.Task, delta : float):
@@ -45,9 +42,8 @@ func shoot() -> bool:
 					target = e;
 	
 	if target != null:
-		var projectile = projectile_scene.instantiate()
-		projectile.texture = pro_texture
-		projectile.start((target.position - global_position).normalized(), 2000, global_position.distance_to(target.position), global_position, target, damage)
+		var projectile = GameflowManager.pro_scene.instantiate()
+		projectile.start((target.position - global_position).normalized(), 2000, global_position.distance_to(target.position), global_position, target, damage, true)
 		GameflowManager.projectiles.add_child(projectile)
 		
 	if target != null:

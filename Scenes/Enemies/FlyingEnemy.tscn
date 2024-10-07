@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://bk1j2xm4kdlnm"]
+
+[ext_resource type="Texture2D" uid="uid://cluyl6mvp14yj" path="res://Assets/Textures/FlyingEnemy.png" id="1_ugh1q"]
+[ext_resource type="Script" path="res://Scenes/Enemies/enemy.gd" id="2_8fn36"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg5ig"]
+atlas = ExtResource("1_ugh1q")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68hfy"]
+atlas = ExtResource("1_ugh1q")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuu70"]
+atlas = ExtResource("1_ugh1q")
+region = Rect2(24, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxn2j"]
+atlas = ExtResource("1_ugh1q")
+region = Rect2(36, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l4p84"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg5ig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68hfy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuu70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxn2j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
+[node name="FlyingEnemy" type="AnimatedSprite2D"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_l4p84")
+autoplay = "default"
+frame_progress = 0.516587
+script = ExtResource("2_8fn36")
+health = 1
+speed = 8.0
+flying = true

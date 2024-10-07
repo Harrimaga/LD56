@@ -1,6 +1,5 @@
 extends Location
 
-@onready var pro_scene = preload("res://Scenes/Projectile.tscn")
 @onready var sprite : AnimatedSprite2D = $Sprite
 
 var cooldown : float = 1.2
@@ -43,7 +42,7 @@ func shoot() -> bool:
 					target = e;
 	
 	if target != null:
-		var projectile = pro_scene.instantiate()
+		var projectile = GameflowManager.pro_scene.instantiate()
 		projectile.start((target.position - global_position).normalized(), 2000, global_position.distance_to(target.position), global_position, target, damage)
 		GameflowManager.projectiles.add_child(projectile)
 		

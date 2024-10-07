@@ -1,10 +1,10 @@
 class_name Enemy extends Location
 
-var pathIndex : int = 0
-var progress : float = 0
-var health : int = 2
-var speed : float = 5
-var flying : bool
+@export var pathIndex : int = 0
+@export var progress : float = 0
+@export var health : int = 2
+@export var speed : float = 5
+@export var flying : bool
 
 var decay_time : float = 30
 var decay_timer : float
@@ -24,7 +24,20 @@ func setPos() -> void:
 		die()
 		return
 	
-	position = GameflowManager.enemyPath[pathIndex] * Vector2(32, 32) * (1 - progress) + GameflowManager.enemyPath[pathIndex + 1] * Vector2(32, 32) * progress
+	var next_pos = GameflowManager.enemyPath[pathIndex] * Vector2(32, 32) * (1 - progress) + GameflowManager.enemyPath[pathIndex + 1] * Vector2(32, 32) * progress
+	
+	var d : Vector2 = (next_pos - position).normalized()
+	
+	if d.x == 1:
+		rotation_degrees = 90
+	elif d.x == -1:
+		rotation_degrees = 270
+	elif d.y == 1:
+		rotation_degrees = 180
+	elif d.y == -1:
+		rotation_degrees = 0
+	
+	position = next_pos
 	
 func die() -> void:
 	dead = true

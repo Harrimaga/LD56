@@ -1,10 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://bn7r48wxqxlvf"]
+[gd_scene load_steps=8 format=3 uid="uid://bn7r48wxqxlvf"]
 
-[ext_resource type="Texture2D" uid="uid://fhdxapdf81dj" path="res://Assets/Textures/Pixel.png" id="1_d5d3g"]
+[ext_resource type="Texture2D" uid="uid://dqdx7yinb6ka6" path="res://Assets/Textures/Enemy.png" id="1_7xka3"]
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy.gd" id="2_kuvfi"]
 
-[node name="Enemy" type="Sprite2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pm3r"]
+atlas = ExtResource("1_7xka3")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_momnf"]
+atlas = ExtResource("1_7xka3")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6588t"]
+atlas = ExtResource("1_7xka3")
+region = Rect2(24, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trdil"]
+atlas = ExtResource("1_7xka3")
+region = Rect2(36, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_klcjj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pm3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_momnf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6588t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trdil")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Enemy" type="AnimatedSprite2D"]
 modulate = Color(1, 0.262745, 0.623529, 1)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_d5d3g")
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_klcjj")
+autoplay = "default"
+frame_progress = 0.195864
 script = ExtResource("2_kuvfi")
