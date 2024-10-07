@@ -37,7 +37,7 @@ func _process(delta: float) -> void:
 func shoot() -> bool:
 	var target = null
 	for e in GameflowManager.enemyList.get_children():
-		if !e.dead or e.flying:
+		if !e.dead and !e.flying:
 			if global_position.distance_to(e.position) < range:
 				if target == null or e.further(target):
 					target = e;

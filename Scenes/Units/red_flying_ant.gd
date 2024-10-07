@@ -4,7 +4,7 @@ func _ready() -> void:
 	inventory_max = 3
 	speed = 200
 	is_flying = false
-	lifespan = 200
+	lifespan = 250
 	super._ready()
 	
 func _process(delta: float) -> void:
