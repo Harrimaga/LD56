@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 	maxDistance -= speed*delta
 	
 	if maxDistance < 0:
-		if target == null:
+		if target != null:
 			target.health -= damage
 			if target.health <= 0:
 				target.die()
