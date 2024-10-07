@@ -41,6 +41,7 @@ func setPos() -> void:
 	
 func die() -> void:
 	dead = true
+	get_child(0).stop()
 	decay_timer = decay_time
 	if GameflowManager.universities.size() > 0:
 		task = TaskManager.add_task(self, null, 1)

@@ -25,11 +25,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="TankEnemy" type="AnimatedSprite2D"]
+[node name="Node2D" type="Node2D"]
+script = ExtResource("2_0gopm")
+
+[node name="TankEnemy" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ao6pe")
 autoplay = "default"
-frame_progress = 0.522425
-script = ExtResource("2_0gopm")
-health = 4
-speed = 2.0
+frame_progress = 0.0362323

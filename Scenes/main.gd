@@ -8,12 +8,14 @@ extends Control
 	$CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/HBoxContainer3/WoodAmmo,
 	$CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/HBoxContainer4/StoneAmmo
 ]
+@onready var hovered_upgrade_cost_label : Label = $CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/Label
+@onready var hovered_upgrade_cost_labels : Array[Label] = [$CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/UpgradeCost/Label, $CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/UpgradeCost/Label2, $CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/UpgradeCost/Label3]
 
 @onready var ant_scenes = [preload("res://Scenes/Units/BasicAnt.tscn"), 
 						   preload("res://Scenes/Units/FlyingAnt.tscn"), 
 						   preload("res://Scenes/Units/RedAnt.tscn"), 
 						   preload("res://Scenes/Units/RedFlyingAnt.tscn")]
-var gameOver : bool = false
+var gameOver : bool = false	
 var hovered_location : Location
 
 # Called when the node enters the scene tree for the first time.
@@ -30,6 +32,9 @@ func hide_hover_info(location : Location):
 	if hovered_location != null and hovered_location == location:
 		hover_info_box.visible = false
 		hovered_location = null
+		hovered_upgrade_cost_label.visible = false
+		$CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/UpgradeCost.visible = false
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -43,6 +48,21 @@ func _process(delta: float) -> void:
 		hover_info_resource_label[2].text = str(hovered_location.stockpile[2])
 		hover_info_resource_label[3].text = str(hovered_location.stockpile[3])
 		hover_info_resource_label[0].text = str(hovered_location.stockpile[0])
+		
+		if hovered_location.is_tower:
+			var mod = 1 + hovered_location.upgraded/4.0
+			
+			mod *= mod
+			var resources_needed_for_building = [int(10*mod), int(10*mod), int(10 * mod * mod)]
+			
+			hovered_upgrade_cost_labels[0].text = str(resources_needed_for_building[0])
+			hovered_upgrade_cost_labels[1].text = str(resources_needed_for_building[1])
+			hovered_upgrade_cost_labels[2].text = str(resources_needed_for_building[2])
+			
+			hovered_upgrade_cost_label.text = "Level %s. Upgrade Cost:" % str(hovered_location.upgraded)
+			hovered_upgrade_cost_label.visible = true
+			$CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/UpgradeCost.visible = true
+		
 
 	if GameflowManager.health <= 0 and not gameOver:
 		gameOver = true

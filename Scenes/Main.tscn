@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b5dwkebl4neo7"]
+[gd_scene load_steps=20 format=3 uid="uid://b5dwkebl4neo7"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_bc47k"]
 [ext_resource type="PackedScene" uid="uid://b2vbrkoh05sw7" path="res://Scenes/Map.tscn" id="1_dwtjv"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://byweu6g8382cr" path="res://Assets/Textures/Carryables/Stone.png" id="13_kf0f7"]
 [ext_resource type="Texture2D" uid="uid://bmxde2wgxaxvw" path="res://Assets/Textures/Carryables/WoodAmmo.png" id="14_pxdgh"]
 [ext_resource type="Texture2D" uid="uid://chn5nscvqgbrd" path="res://Assets/Textures/projectile.png" id="15_cyte2"]
+[ext_resource type="Texture2D" uid="uid://drqkpsg2akqqi" path="res://Assets/Textures/Carryables/Research.png" id="17_mfx6n"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -184,6 +185,8 @@ size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(16, 16)
@@ -199,6 +202,8 @@ text = "12"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(16, 16)
@@ -214,6 +219,8 @@ text = "12"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(16, 16)
@@ -229,6 +236,8 @@ text = "12"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/HBoxContainer4"]
 custom_minimum_size = Vector2(16, 16)
@@ -241,6 +250,49 @@ stretch_mode = 4
 layout_mode = 2
 size_flags_horizontal = 3
 text = "12"
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Level {0}. Upgrade Cost:"
+
+[node name="UpgradeCost" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/UpgradeCost"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("12_0diyd")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/UpgradeCost"]
+layout_mode = 2
+text = "{0}"
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/UpgradeCost"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("13_kf0f7")
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/UpgradeCost"]
+layout_mode = 2
+text = "{0}"
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/UpgradeCost"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("17_mfx6n")
+stretch_mode = 4
+
+[node name="Label3" type="Label" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/UpgradeCost"]
+layout_mode = 2
+text = "{0}"
 
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo"]
 custom_minimum_size = Vector2(50, 0)

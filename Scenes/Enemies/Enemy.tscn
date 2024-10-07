@@ -39,10 +39,12 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Enemy" type="AnimatedSprite2D"]
+[node name="Node2D" type="Node2D"]
+script = ExtResource("2_kuvfi")
+
+[node name="Enemy" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 0.262745, 0.623529, 1)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_klcjj")
 autoplay = "default"
 frame_progress = 0.195864
-script = ExtResource("2_kuvfi")

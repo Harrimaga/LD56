@@ -39,12 +39,11 @@ animations = [{
 "speed": 30.0
 }]
 
-[node name="FlyingEnemy" type="AnimatedSprite2D"]
+[node name="Node2D" type="Node2D"]
+script = ExtResource("2_8fn36")
+
+[node name="FlyingEnemy" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_l4p84")
 autoplay = "default"
-frame_progress = 0.516587
-script = ExtResource("2_8fn36")
-health = 1
-speed = 8.0
-flying = true
+frame_progress = 0.508948
