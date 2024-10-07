@@ -164,7 +164,7 @@ var difficulty : float
 
 func set_wave_params():
 	wave = 0
-	timerToNextWave = 0
+	timerToNextWave = 80
 	spawnTimer = 0
 	spawnNextTimer = 0
 	interval = 0
