@@ -2,8 +2,8 @@ extends Node2D
 
 @onready var tile = preload("res://Scenes/Tiles/ground.tscn")
 @onready var enemy = preload("res://Scenes/Enemies/Enemy.tscn")
-@onready var flying_enemy = preload("res://Scenes/Enemies/Flying.tscn")
-@onready var tanky_enemy = preload("res://Scenes/Enemies/Tanky.tscn")
+@onready var flying_enemy = preload("res://Scenes/Enemies/FlyingEnemy.tscn")
+@onready var tanky_enemy = preload("res://Scenes/Enemies/TankEnemy.tscn")
 @onready var mine_scene = preload("res://Scenes/Locations/Mine.tscn")
 @onready var tower_scene = preload("res://Scenes/Locations/BasicTower.tscn")
 @onready var hive_scene = preload("res://Scenes/Locations/Hive.tscn")
