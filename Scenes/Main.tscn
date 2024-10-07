@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b5dwkebl4neo7"]
+[gd_scene load_steps=24 format=3 uid="uid://b5dwkebl4neo7"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_bc47k"]
 [ext_resource type="PackedScene" uid="uid://b2vbrkoh05sw7" path="res://Scenes/Map.tscn" id="1_dwtjv"]
@@ -20,6 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://chn5nscvqgbrd" path="res://Assets/Textures/projectile.png" id="15_cyte2"]
 [ext_resource type="Texture2D" uid="uid://drqkpsg2akqqi" path="res://Assets/Textures/Carryables/Research.png" id="17_mfx6n"]
 [ext_resource type="AudioStream" uid="uid://byp76y4q25qcy" path="res://Assets/music/LD56.mp3" id="18_hv5ol"]
+[ext_resource type="Texture2D" uid="uid://deptgs87oiidl" path="res://Assets/Textures/BasicSprite.png" id="19_caxe3"]
+[ext_resource type="Texture2D" uid="uid://dmi2wkjt3wgqu" path="res://Assets/Textures/FlyingSprite.png" id="20_xgnqg"]
+[ext_resource type="Texture2D" uid="uid://b7av601xu6qyh" path="res://Assets/Textures/TankSprite.png" id="21_jps3d"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -103,6 +106,7 @@ offset_left = 94.0
 offset_right = 106.0
 
 [node name="BuildingButton3" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons" instance=ExtResource("3_lm05u")]
+visible = false
 layout_mode = 2
 
 [node name="BuildingButton" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons/BuildingButton3" index="0"]
@@ -344,29 +348,207 @@ horizontal_alignment = 1
 
 [node name="MainMenu" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 0
-offset_left = 1920.0
-offset_right = 1920.0
-offset_bottom = 1080.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/MainMenu"]
-layout_mode = 0
-offset_left = -1927.0
-offset_top = -7.0
-offset_right = 3.0
-offset_bottom = 1078.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="start" type="Button" parent="CanvasLayer/MainMenu"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 1
-anchors_preset = -1
-anchor_bottom = 0.391
-offset_left = -1168.0
-offset_top = 415.0
-offset_right = -768.0
-offset_bottom = 240.72
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 300.0
+offset_right = 200.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Start
 "
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/MainMenu"]
+layout_mode = 0
+offset_left = 586.0
+offset_top = 100.0
+offset_right = 1338.0
+offset_bottom = 294.0
+color = Color(0.124083, 0.124083, 0.124083, 1)
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/MainMenu/ColorRect2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -335.5
+offset_top = -141.0
+offset_right = 331.5
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+columns = 6
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainMenu/ColorRect2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_2e53y")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/MainMenu/ColorRect2/GridContainer"]
+layout_mode = 2
+text = "Mine: Gathers stone"
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/MainMenu/ColorRect2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_mtmmo")
+stretch_mode = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/MainMenu/ColorRect2/GridContainer"]
+layout_mode = 2
+text = "Catapult: Shoots grounded units"
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/MainMenu/ColorRect2/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("19_caxe3")
+stretch_mode = 4
+
+[node name="Label3" type="Label" parent="CanvasLayer/MainMenu/ColorRect2/GridContainer"]
+layout_mode = 2
+text = "Basic enemy"
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/MainMenu/ColorRect2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_lw3sa")
+stretch_mode = 2
+
+[node name="Label4" type="Label" parent="CanvasLayer/MainMenu/ColorRect2/GridContainer"]
+layout_mode = 2
+text = "Lumberyard: Gathers wood"
+
+[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/MainMenu/ColorRect2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_bownr")
+stretch_mode = 2
+
+[node name="Label5" type="Label" parent="CanvasLayer/MainMenu/ColorRect2/GridContainer"]
+layout_mode = 2
+text = "Ballista: Shoots flying units"
+
+[node name="TextureRect6" type="TextureRect" parent="CanvasLayer/MainMenu/ColorRect2/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("20_xgnqg")
+stretch_mode = 4
+
+[node name="Label6" type="Label" parent="CanvasLayer/MainMenu/ColorRect2/GridContainer"]
+layout_mode = 2
+text = "Flying enemy"
+
+[node name="TextureRect7" type="TextureRect" parent="CanvasLayer/MainMenu/ColorRect2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("12_j2b7b")
+stretch_mode = 2
+
+[node name="Label7" type="Label" parent="CanvasLayer/MainMenu/ColorRect2/GridContainer"]
+layout_mode = 2
+text = "Ammo Factory: Produces ammo"
+
+[node name="TextureRect8" type="TextureRect" parent="CanvasLayer/MainMenu/ColorRect2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_1jgqc")
+stretch_mode = 2
+
+[node name="Label8" type="Label" parent="CanvasLayer/MainMenu/ColorRect2/GridContainer"]
+layout_mode = 2
+text = "Upgrade: Upgrades towers"
+
+[node name="TextureRect9" type="TextureRect" parent="CanvasLayer/MainMenu/ColorRect2/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("21_jps3d")
+stretch_mode = 4
+
+[node name="Label9" type="Label" parent="CanvasLayer/MainMenu/ColorRect2/GridContainer"]
+layout_mode = 2
+text = "Tank enemy"
+
+[node name="TextureRect10" type="TextureRect" parent="CanvasLayer/MainMenu/ColorRect2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_pily0")
+stretch_mode = 2
+
+[node name="Label10" type="Label" parent="CanvasLayer/MainMenu/ColorRect2/GridContainer"]
+layout_mode = 2
+text = "Research: Produces reasearch"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MainMenu"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -350.0
+offset_top = -760.0
+offset_right = 350.0
+offset_bottom = -277.0
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "[center]How to play:
+- Click a button on the right panel to select a building
+- Swap between the Tower Defence area and the Base Building area with the ' >' button on the right
+- Build Mines and Lumberyards to gain resources, your hive stars with a small supply
+- Build Towers to defeat waves of enemies
+- Build Ammo Factories to supply ammo to your towers
+- Dead enemies will be moved to the closest research building, if there are any
+- Upgrade towers using research points and materials
+- Upgrade your hive using research points (a button will appear when ready) to spawn more ants
+
+Ants:
+- Ants get jobs queued to them whenever buildings need them
+- Towers and buildings will claim a couple ants to always work for them, they may appear idle but they might just be waiting
+- Ants have bad communication, they may drop resources when the task is completed by another ant
+
+Hint: 
+Build mines close to your hive, not close to the resource on the map to reduce travel time"
+fit_content = true
 
 [node name="Map" parent="." instance=ExtResource("1_dwtjv")]
 visible = false
