@@ -85,7 +85,7 @@ func _on_start_pressed() -> void:
 	for e in $Map/Enemies.get_children():
 		e.queue_free()
 	
-	for i in range(30):
+	for i in range(40):
 		var ant : Ant = ant_scenes[0].instantiate()
 		TaskManager.add_to_pool(ant)
 		add_child(ant)
