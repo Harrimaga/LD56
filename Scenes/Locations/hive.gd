@@ -18,6 +18,9 @@ func _ready() -> void:
 	GameflowManager.hive = self
 	GameflowManager.stockpile_buildings.append(self)
 	GameflowManager.ammo_buildings.append(self)
+	spawn_interval = 3
+	luck = -4
+	upgrade_cost = 20
 	
 	
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b5dwkebl4neo7"]
+[gd_scene load_steps=19 format=3 uid="uid://b5dwkebl4neo7"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_bc47k"]
 [ext_resource type="PackedScene" uid="uid://b2vbrkoh05sw7" path="res://Scenes/Map.tscn" id="1_dwtjv"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://byweu6g8382cr" path="res://Assets/Textures/Carryables/Stone.png" id="13_kf0f7"]
 [ext_resource type="Texture2D" uid="uid://bmxde2wgxaxvw" path="res://Assets/Textures/Carryables/WoodAmmo.png" id="14_pxdgh"]
 [ext_resource type="Texture2D" uid="uid://chn5nscvqgbrd" path="res://Assets/Textures/projectile.png" id="15_cyte2"]
+[ext_resource type="AudioStream" uid="uid://byp76y4q25qcy" path="res://Assets/music/LD56.mp3" id="18_hv5ol"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -318,6 +319,10 @@ visible = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_hv5ol")
+parameters/looping = true
 
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/Panel/HBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameOver/start" to="." method="_on_start_pressed"]

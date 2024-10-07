@@ -46,6 +46,7 @@ func _process(delta: float) -> void:
 
 	if GameflowManager.health <= 0 and not gameOver:
 		gameOver = true
+		$AudioStreamPlayer.stop()
 		$CanvasLayer/GameOver/Score.text = "Your final score:\n" + str(GameflowManager.score)
 		$CanvasLayer/GameOver.visible = true
 		$Map.visible = false
@@ -64,12 +65,14 @@ func _on_button_pressed() -> void:
 
 
 func _on_start_pressed() -> void:
+	$AudioStreamPlayer.play()
 	$CanvasLayer/MainMenu.visible = false
 	$Map.visible = true
 	$Map.started = true
 	$CanvasLayer/GameOver.visible = false
 	
 	GameflowManager.score = 0
+	GameflowManager.research = 0
 	GameflowManager.health = 50
 	GameflowManager.ammo_buildings = []
 	GameflowManager.stockpile_buildings = []
