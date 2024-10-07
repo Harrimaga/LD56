@@ -1,7 +1,5 @@
 extends Location
 
-@onready var stockpile_label : RichTextLabel = $RichTextLabel
-
 var capacity : int = 5
 
 # Called when the node enters the scene tree for the first time.
