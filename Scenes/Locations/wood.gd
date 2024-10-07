@@ -1,8 +1,6 @@
 extends Location
 
-@onready var stockpile_label : RichTextLabel = $RichTextLabel
-
-var capacity : int = 2
+var capacity: int = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,10 +11,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func destination_action(ant : Ant, task : TaskManager.Task, delta : float):
+func destination_action(ant: Ant, task: TaskManager.Task, delta: float):
 	ant.remove_from_inventory()
 	
-func origin_action(ant : Ant, delta : float) -> bool:
+func origin_action(ant: Ant, delta: float) -> bool:
 	while ant.add_to_inventory(CarryingResource.new(CarryingResource.ResourceType.WOOD)) and stockpile[0] > 0:
 		stockpile[0] -= 1
 	
