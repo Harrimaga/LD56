@@ -12,9 +12,9 @@ var upgraded : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	TaskManager.add_task(null, self, 5, -1, false)
+	TaskManager.add_task(null, self, 4, -1, false)
 	
-func destination_action(ant : Ant, delta : float):
+func destination_action(ant : Ant, task : TaskManager.Task, delta : float):
 	ant.remove_from_inventory()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,7 +45,7 @@ func shoot() -> bool:
 
 func perform_upgrade() -> void:
 	upgraded += 1
-	damage += 10
+	damage += 15
 	range += 16
 	cooldown *= 0.85
 	

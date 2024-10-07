@@ -13,9 +13,9 @@ var upgraded : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	TaskManager.add_task(null, self, 5, -1, true)
+	TaskManager.add_task(null, self, 2, -1, true)
 	
-func destination_action(ant : Ant, delta : float):
+func destination_action(ant : Ant, task : TaskManager.Task, delta : float):
 	ant.remove_from_inventory()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

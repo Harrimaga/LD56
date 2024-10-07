@@ -26,7 +26,7 @@ var on_tile : Tile
 func origin_action(ant : Ant, delta : float):
 	pass
 	
-func destination_action(ant : Ant, delta : float):
+func destination_action(ant : Ant, task : TaskManager.Task, delta : float):
 	pass
 
 func get_resource_tile(wood : bool) -> Tile:

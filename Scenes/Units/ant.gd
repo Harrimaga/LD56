@@ -21,6 +21,8 @@ var is_flying : bool
 var lifespan : float
 var age : float
 
+var in_worker_pool : int = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	inventory = []
@@ -48,7 +50,12 @@ func _process(delta: float) -> void:
 	## Find path, do work
 	
 	if path_pointer >= path.size():
-		if !do_work(delta): return
+		if !do_work(delta): 
+			in_worker_pool += 1
+			if in_worker_pool == 2:
+				print("Readded to worker pool")
+				TaskManager.worker_pool.append(self)
+			return
 		
 		if task == null: return
 		
@@ -66,7 +73,7 @@ func do_work(delta : float) -> bool:
 	if task == null: return false
 	
 	if task.origin == null and task.destination == null:
-		task = null
+		TaskManager.remove_task(task)
 		return false
 
 	if task.origin == null:
@@ -111,7 +118,7 @@ func do_work(delta : float) -> bool:
 			return false
 
 	if (position - task.destination.global_position).length() <= 0.1 and (task.destination == task.origin or inventory.size() > 0):
-		task.destination.destination_action(self, delta)
+		task.destination.destination_action(self, task, delta)
 
 		if task == null: 
 			return false
@@ -140,6 +147,8 @@ func do_work(delta : float) -> bool:
 			return false
 
 	path_pointer = 0
+	if path == []:
+		return true
 	flip_h = path[path_pointer].x > position.x
 	return true
 

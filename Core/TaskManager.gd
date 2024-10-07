@@ -63,10 +63,31 @@ func remove_task(task : Task):
 			task.worker_pool = []
 			
 			task_pool.remove_at(i)
-			break
+			return
 		i -= 1
+	
+	# It apparently was not in the list, so this is a fail save
+	for ant in task.worker_pool:
+		if ant == null: continue
+		ant.task = null
+		ant.temp_origin = null
+		ant.path = []
+		ant.inventory = []
+	worker_pool.append_array(task.worker_pool.duplicate(true))
+	task.worker_pool = []
+		
+	
 
 func _process(delta: float) -> void:
+	# Make sure all the ants are in the work pool
+	for ant in worker_pool:
+		ant.in_worker_pool = 0
+		ant.task = null
+	for task in task_pool:
+		for ant in task.worker_pool:
+			ant.in_worker_pool = 0
+			ant.task = task
+	
 	for task in task_pool:
 		if worker_pool.size() <= 0: break
 
