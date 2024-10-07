@@ -178,8 +178,8 @@ func wave_update(delta : float):
 		spawnTimer = 6 + 0.25*wave
 		timerToNextWave = spawnTimer + max(8 - 0.05*wave, 3)
 		interval = max(0.9 - 0.015*wave, 0.1)
-		difficulty = 1 + wave/30.0
-		difficulty *= difficulty
+		difficulty = 1 + wave/20.0
+		difficulty *= sqrt(difficulty)
 		
 		wave += 1
 		if wave % 7 == 0:
