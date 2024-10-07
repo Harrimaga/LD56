@@ -21,6 +21,7 @@ static var tower_cost : Dictionary = {
 }
 
 var is_tower : bool
+var on_tile : Tile
 
 func origin_action(ant : Ant, delta : float):
 	pass

@@ -40,6 +40,8 @@ func build(p_building : Location):
 	building = p_building
 	add_child(building)
 	$Button.visible = false
+	is_being_built = false
+	building.on_tile = self
 	
 func plan():
 	walkable = false
@@ -126,6 +128,9 @@ func destination_action(ant : Ant, delta : float):
 
 				build(b)
 				self_modulate = Color(0.6, 1, 0.3)
+	else:
+		TaskManager.remove_task(task)
+		ant.task = null
 
 func setPos(p : Vector2):
 	position = p
