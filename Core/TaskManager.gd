@@ -66,15 +66,6 @@ func remove_task(task : Task):
 			return
 		i -= 1
 	
-	# It apparently was not in the list, so this is a fail save
-	for ant in task.worker_pool:
-		if ant == null: continue
-		ant.task = null
-		ant.temp_origin = null
-		ant.path = []
-		ant.inventory = []
-	worker_pool.append_array(task.worker_pool.duplicate(true))
-	task.worker_pool = []
 		
 	
 
