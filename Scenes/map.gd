@@ -1,7 +1,9 @@
 extends Node2D
 
 @onready var tile = preload("res://Scenes/Tiles/ground.tscn")
-@onready var enemies = [preload("res://Scenes/Enemies/Enemy.tscn"), preload("res://Scenes/Enemies/FlyingEnemy.tscn"), preload("res://Scenes/Enemies/TankEnemy.tscn")]
+@onready var enemy = preload("res://Scenes/Enemies/Enemy.tscn")
+@onready var flying_enemy = preload("res://Scenes/Enemies/Flying.tscn")
+@onready var tanky_enemy = preload("res://Scenes/Enemies/Tanky.tscn")
 @onready var mine_scene = preload("res://Scenes/Locations/Mine.tscn")
 @onready var tower_scene = preload("res://Scenes/Locations/BasicTower.tscn")
 @onready var hive_scene = preload("res://Scenes/Locations/Hive.tscn")
@@ -162,7 +164,7 @@ var difficulty : float
 
 func set_wave_params():
 	wave = 0
-	timerToNextWave = 60
+	timerToNextWave = 80
 	spawnTimer = 0
 	spawnNextTimer = 0
 	interval = 0
@@ -173,13 +175,21 @@ func set_wave_params():
 func wave_update(delta : float):
 	timerToNextWave -= delta
 	if timerToNextWave <= 0:
-		spawnTimer = 5 + 0.2*wave
-		timerToNextWave = spawnTimer + max(6 - 0.1*wave, 2)
-		interval = max(0.99 - 0.01*wave, 0.1)
+		spawnTimer = 6 + 0.25*wave
+		timerToNextWave = spawnTimer + max(8 - 0.05*wave, 3)
+		interval = max(0.9 - 0.015*wave, 0.1)
 		difficulty = 1 + wave/30.0
 		difficulty *= difficulty
 		
 		wave += 1
+		if wave % 7 == 0:
+			type = 2
+			interval *= 2
+		elif wave % 3 == 0:
+			type = 1
+		else:
+			type = 0
+		
 		
 		
 	spawnTimer -= delta
@@ -192,6 +202,19 @@ func wave_update(delta : float):
 	
 
 func spawnEnemy() -> void:
-	var e = enemies.pick_random().instantiate()
-	e.health = int(50 * difficulty)
-	$Enemies.add_child(e)
+	match type:
+		0:
+			var e = enemy.instantiate()
+			e.health = int(50 * difficulty)
+			$Enemies.add_child(e)
+		1:
+			var e = flying_enemy.instantiate()
+			e.health = int(30 * difficulty)
+			e.speed = 8
+			e.flying = true
+			$Enemies.add_child(e)
+		2:
+			var e = tanky_enemy.instantiate()
+			e.health = int(200 * difficulty)
+			e.speed = 2
+			$Enemies.add_child(e)

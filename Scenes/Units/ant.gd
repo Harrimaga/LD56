@@ -63,7 +63,7 @@ func _process(delta: float) -> void:
 			TaskManager.kill_ant(self)
 			queue_free()
 	
-	position = position.move_toward(path[path_pointer], speed*delta * (1.2 if is_flying else 1.0))
+	position = position.move_toward(path[path_pointer], speed*delta * (1.35 if is_flying else 1.0))
 
 	if (position - path[path_pointer]).length() <= 0.1:
 		position = path[path_pointer]

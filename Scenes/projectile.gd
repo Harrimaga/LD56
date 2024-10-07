@@ -30,8 +30,9 @@ func _process(delta: float) -> void:
 	maxDistance -= speed*delta
 	
 	if maxDistance < 0:
-		target.health -= damage
-		if target.health <= 0:
-			target.die()
-			GameflowManager.score += 1
+		if target != null:
+			target.health -= damage
+			if target.health <= 0:
+				target.die()
+				GameflowManager.score += 1
 		queue_free();
