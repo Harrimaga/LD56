@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bl8ylpfgvao15" path="res://Assets/Textures/Wood.png" id="7_lw3sa"]
 [ext_resource type="Texture2D" uid="uid://2bl4cl87u25n" path="res://Assets/Textures/Uni.png" id="8_pily0"]
 [ext_resource type="Texture2D" uid="uid://djfv5glldweve" path="res://Assets/Textures/Carryables/Wood.png" id="12_0diyd"]
+[ext_resource type="Texture2D" uid="uid://cyl4fxl03y80h" path="res://Assets/Textures/ButtonTextures/Armoury.png" id="12_j2b7b"]
 [ext_resource type="Texture2D" uid="uid://byweu6g8382cr" path="res://Assets/Textures/Carryables/Stone.png" id="13_kf0f7"]
 [ext_resource type="Texture2D" uid="uid://bmxde2wgxaxvw" path="res://Assets/Textures/Carryables/WoodAmmo.png" id="14_pxdgh"]
 [ext_resource type="Texture2D" uid="uid://chn5nscvqgbrd" path="res://Assets/Textures/projectile.png" id="15_cyte2"]
@@ -153,6 +154,7 @@ building_type = 3
 layout_mode = 2
 
 [node name="BuildingButton" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons/BuildingButton4" index="0"]
+texture_normal = ExtResource("12_j2b7b")
 building_type = 4
 
 [node name="Button" type="Button" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer"]
