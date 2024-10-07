@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var tile = preload("res://Scenes/Tiles/ground.tscn")
-@onready var enemy = preload("res://Scenes/Enemies/Enemy.tscn")
+@onready var enemies = [preload("res://Scenes/Enemies/Enemy.tscn"), preload("res://Scenes/Enemies/FlyingEnemy.tscn"), preload("res://Scenes/Enemies/TankEnemy.tscn")]
 @onready var mine_scene = preload("res://Scenes/Locations/Mine.tscn")
 @onready var tower_scene = preload("res://Scenes/Locations/BasicTower.tscn")
 @onready var hive_scene = preload("res://Scenes/Locations/Hive.tscn")
@@ -192,6 +192,6 @@ func wave_update(delta : float):
 	
 
 func spawnEnemy() -> void:
-	var e = enemy.instantiate()
+	var e = enemies.pick_random().instantiate()
 	e.health = int(50 * difficulty)
 	$Enemies.add_child(e)

@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkh5g6f7xwex0"]
+
+[ext_resource type="Texture2D" uid="uid://df2rh2reo4ads" path="res://Assets/Textures/TankEnemy.png" id="1_838fk"]
+[ext_resource type="Script" path="res://Scenes/Enemies/enemy.gd" id="2_0gopm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vujxt"]
+atlas = ExtResource("1_838fk")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5npnn"]
+atlas = ExtResource("1_838fk")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ao6pe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vujxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5npnn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="TankEnemy" type="AnimatedSprite2D"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ao6pe")
+autoplay = "default"
+frame_progress = 0.522425
+script = ExtResource("2_0gopm")
+health = 4
+speed = 2.0

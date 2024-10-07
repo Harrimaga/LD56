@@ -1,5 +1,6 @@
 extends Sprite2D
 
+@onready var wood_texture = preload("res://Assets/Textures/Carryables/WoodAmmo.png")
 
 var direction : Vector2
 var speed : float
@@ -7,13 +8,16 @@ var maxDistance : float
 var target : Enemy
 var damage : int
 
-func start(dir, s, dist, pos, e, dam):
+func start(dir, s, dist, pos, e, dam, wood = false):
 	direction = dir
 	speed = s
 	maxDistance = dist
 	position = pos
 	target = e
 	damage = dam
+	
+	if wood:
+		texture = wood_texture
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

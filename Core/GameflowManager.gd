@@ -5,6 +5,8 @@ signal TowerSelected
 signal LocationHovered(l : Location)
 signal LocationUnhovered(l : Location)
 
+@onready var pro_scene = preload("res://Scenes/Projectile.tscn")
+
 var enemyPath : Array
 var enemyList : Node2D
 var projectiles : Node2D

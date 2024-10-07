@@ -14,7 +14,7 @@ var rng = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	## Starting resources:
-	stockpile = [40, 40, 0, 25]
+	stockpile = [40, 40, 25, 25]
 	GameflowManager.hive = self
 	GameflowManager.stockpile_buildings.append(self)
 	GameflowManager.ammo_buildings.append(self)
