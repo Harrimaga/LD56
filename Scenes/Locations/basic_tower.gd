@@ -10,12 +10,18 @@ var damage : float = 50
 
 var upgraded : int = 0
 
+var task : TaskManager.Task
+var task_added : bool = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	TaskManager.add_task(null, self, 5, -1, false)
+	task = TaskManager.add_task(null, self, 10, -1, false)
 	
-func destination_action(ant : Ant, delta : float):
+func destination_action(ant : Ant, task : TaskManager.Task, delta : float):
 	ant.remove_from_inventory()
+	if stockpile[3] >= 40 and task_added:
+		TaskManager.remove_task(task)
+		task_added = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -24,6 +30,9 @@ func _process(delta: float) -> void:
 		if shoot():
 			stockpile[3] -= 1
 			timer = cooldown
+			if stockpile[3] <= 20 and not task_added:
+				TaskManager.re_add_task(task)
+				task_added = true
 
 func shoot() -> bool:
 	var target = null
@@ -45,7 +54,7 @@ func shoot() -> bool:
 
 func perform_upgrade() -> void:
 	upgraded += 1
-	damage += 10
+	damage += 15
 	range += 16
 	cooldown *= 0.85
 	

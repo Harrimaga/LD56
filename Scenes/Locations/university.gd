@@ -5,9 +5,9 @@ func _ready() -> void:
 	stockpile.append(0)
 	GameflowManager.universities.append(self)
 	
-func destination_action(ant : Ant, delta : float):
+func destination_action(ant : Ant, task : TaskManager.Task, delta : float):
 	ant.remove_from_inventory()
-	TaskManager.remove_task(ant.task)
+	TaskManager.remove_task(task)
 	GameflowManager.research += stockpile[4]
 	stockpile[4] = 0
 

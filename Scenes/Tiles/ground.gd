@@ -40,6 +40,8 @@ func build(p_building : Location):
 	building = p_building
 	add_child(building)
 	$Button.visible = false
+	is_being_built = false
+	building.on_tile = self
 	
 func plan():
 	walkable = false
@@ -70,22 +72,25 @@ func plan_tower():
 	plan()
 	
 func plan_upgrade():
-	var mod = 1 + building.upgraded/4
-	
-	if GameflowManager.research < 10 * mod * mod:
+	if is_being_built:
 		return
-	GameflowManager.research -= 10 * mod * mod
+	var mod = 1 + building.upgraded/4.0
+	
+	if GameflowManager.research < int(10 * mod * mod):
+		return
+	GameflowManager.research -= int(10 * mod * mod)
 	
 	planned_tower = GameflowManager.selected_tower
 	building_tower = true
 	time_to_build = 10*mod
+	upgraded = false
 	
 	mod *= mod
-	resources_needed_for_building = [10*mod, 10*mod]
+	resources_needed_for_building = [int(10*mod), int(10*mod)]
 	
 	plan()
 	
-func destination_action(ant : Ant, delta : float):
+func destination_action(ant : Ant, t : TaskManager.Task, delta : float):
 	if is_being_built:
 		if resources_needed_for_building[0] > 0 or resources_needed_for_building[1] > 0:
 			ant.remove_from_inventory()
@@ -93,13 +98,13 @@ func destination_action(ant : Ant, delta : float):
 			resources_needed_for_building[1] -= stockpile[1]
 			stockpile = [0, 0, 0, 0]
 			if resources_needed_for_building[0] <= 0 and resources_needed_for_building[1] <= 0:
-				TaskManager.remove_task(task)
+				TaskManager.remove_task(t)
 
 				build_stage += 1
 				task = TaskManager.add_task(self, self, -1, total_resources_for_building.reduce(func(a, n): return a+n, 0))
 				
 		elif build_stage == 0:
-			TaskManager.remove_task(task)
+			TaskManager.remove_task(t)
 			
 			build_stage += 1
 			task = TaskManager.add_task(self, self, -1, total_resources_for_building.reduce(func(a, n): return a+n, 0))
@@ -108,7 +113,7 @@ func destination_action(ant : Ant, delta : float):
 			time_to_build -= delta
 			
 			if time_to_build <= 0:
-				TaskManager.remove_task(task)
+				TaskManager.remove_task(t)
 				
 				var b : Location
 				
@@ -116,6 +121,8 @@ func destination_action(ant : Ant, delta : float):
 					if not upgraded:
 						building.perform_upgrade()
 						upgraded = true
+						is_being_built = false
+						self_modulate = Color(0.6, 1, 0.3)
 					return
 				
 				elif building_tower:
@@ -126,6 +133,8 @@ func destination_action(ant : Ant, delta : float):
 
 				build(b)
 				self_modulate = Color(0.6, 1, 0.3)
+	else:
+		TaskManager.remove_task(t)
 
 func setPos(p : Vector2):
 	position = p

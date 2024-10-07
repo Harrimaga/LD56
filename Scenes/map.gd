@@ -176,7 +176,7 @@ func wave_update(delta : float):
 		spawnTimer = 5 + 0.2*wave
 		timerToNextWave = spawnTimer + max(6 - 0.1*wave, 2)
 		interval = max(0.99 - 0.01*wave, 0.1)
-		difficulty = 1 + wave/20.0
+		difficulty = 1 + wave/30.0
 		difficulty *= difficulty
 		
 		wave += 1
@@ -193,5 +193,5 @@ func wave_update(delta : float):
 
 func spawnEnemy() -> void:
 	var e = enemy.instantiate()
-	e.health = int(80 * difficulty)
+	e.health = int(50 * difficulty)
 	$Enemies.add_child(e)

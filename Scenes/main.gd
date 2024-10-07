@@ -86,7 +86,7 @@ func _on_start_pressed() -> void:
 		e.queue_free()
 	
 	for i in range(30):
-		var ant : Ant = ant_scenes.pick_random().instantiate()
+		var ant : Ant = ant_scenes[0].instantiate()
 		TaskManager.add_to_pool(ant)
 		add_child(ant)
 	

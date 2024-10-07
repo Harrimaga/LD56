@@ -1,6 +1,6 @@
 extends Location
 
-var time_per_ammo : float = 5
+var time_per_ammo : float = 3
 var timer : float
 var capacity : int = 2
 
@@ -20,7 +20,7 @@ func _ready() -> void:
 	
 	GameflowManager.ammo_buildings.append(self)
 	
-func destination_action(ant : Ant, delta : float):
+func destination_action(ant : Ant, task : TaskManager.Task, delta : float):
 	ant.remove_from_inventory()
 	
 	if stockpile[0] >= 50:
