@@ -1,6 +1,7 @@
 extends Location
 
 @onready var pro_scene = preload("res://Scenes/Projectile.tscn")
+@onready var pro_texture = preload("res://Assets/Textures/Carryables/WoodAmmo.png")
 @onready var sprite : AnimatedSprite2D = $Sprite
 
 var cooldown : float = 1.2
@@ -12,7 +13,7 @@ var upgraded : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	TaskManager.add_task(null, self, 5, -1, false)
+	TaskManager.add_task(null, self, 5, -1, true)
 	
 func destination_action(ant : Ant, delta : float):
 	ant.remove_from_inventory()
@@ -20,21 +21,22 @@ func destination_action(ant : Ant, delta : float):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	timer -= delta
-	if timer <= 0 and stockpile[3] > 0:
+	if timer <= 0 and stockpile[2] > 0:
 		if shoot():
-			stockpile[3] -= 1
+			stockpile[2] -= 1
 			timer = cooldown
 
 func shoot() -> bool:
 	var target = null
 	for e in GameflowManager.enemyList.get_children():
-		if !e.dead or e.flying:
+		if !e.dead or !e.flying:
 			if global_position.distance_to(e.position) < range:
 				if target == null or e.further(target):
 					target = e;
 	
 	if target != null:
 		var projectile = pro_scene.instantiate()
+		projectile.texture = pro_texture
 		projectile.start((target.position - global_position).normalized(), 2000, global_position.distance_to(target.position), global_position, target, damage)
 		GameflowManager.projectiles.add_child(projectile)
 		

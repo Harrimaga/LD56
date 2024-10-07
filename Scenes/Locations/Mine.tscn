@@ -1,28 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://clfq7i1t0xcj0"]
+[gd_scene load_steps=4 format=3 uid="uid://clfq7i1t0xcj0"]
 
-[ext_resource type="Texture2D" uid="uid://fhdxapdf81dj" path="res://Assets/Textures/Pixel.png" id="1_oq34n"]
 [ext_resource type="Script" path="res://Scenes/Locations/mine.gd" id="1_vbqh6"]
+[ext_resource type="Texture2D" uid="uid://vp4ksu0mgekk" path="res://Assets/Textures/Mine.png" id="2_kd3r2"]
+[ext_resource type="PackedScene" uid="uid://c4j72mq6twip3" path="res://Scenes/Locations/HoverBox.tscn" id="3_asqw0"]
 
 [node name="Mine" type="Node2D"]
 z_index = 1
 script = ExtResource("1_vbqh6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_oq34n")
+texture = ExtResource("2_kd3r2")
 
-[node name="Label" type="Label" parent="."]
-offset_left = -7.0
-offset_top = -12.0
-offset_right = 33.0
-offset_bottom = 11.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "M"
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-self_modulate = Color(0, 0, 0, 1)
-offset_left = 10.0
-offset_top = -12.0
-offset_right = 169.0
-offset_bottom = 12.0
-bbcode_enabled = true
-text = "Stock: 0"
+[node name="HoverBox" parent="." instance=ExtResource("3_asqw0")]

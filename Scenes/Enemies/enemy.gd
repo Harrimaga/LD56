@@ -4,6 +4,7 @@ var pathIndex : int = 0
 var progress : float = 0
 var health : int = 2
 var speed : float = 5
+var flying : bool
 
 var decay_time : float = 30
 var decay_timer : float

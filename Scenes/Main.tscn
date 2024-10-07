@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5dwkebl4neo7"]
+[gd_scene load_steps=18 format=3 uid="uid://b5dwkebl4neo7"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_bc47k"]
 [ext_resource type="PackedScene" uid="uid://b2vbrkoh05sw7" path="res://Scenes/Map.tscn" id="1_dwtjv"]
@@ -6,6 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://m4t27o2c25sw" path="res://Scenes/UI/BuildingButton.tscn" id="3_ioc5v"]
 [ext_resource type="PackedScene" uid="uid://bmusp61ec8j40" path="res://Scenes/UI/TowerButton.tscn" id="3_lm05u"]
 [ext_resource type="PackedScene" uid="uid://b6d6sgi28ynot" path="res://Scenes/mainHud.tscn" id="3_x5bow"]
+[ext_resource type="Texture2D" uid="uid://dk2280xn82g1g" path="res://Assets/Textures/ButtonTextures/BasicTower.png" id="4_mtmmo"]
+[ext_resource type="Texture2D" uid="uid://b2lf2fe8h5rmh" path="res://Assets/Textures/ButtonTextures/FlakTower.png" id="5_bownr"]
+[ext_resource type="Texture2D" uid="uid://djsxoc2tnt3x7" path="res://Assets/Textures/Obstacle.png" id="5_xlm8l"]
+[ext_resource type="Texture2D" uid="uid://c20njbqfyases" path="res://Assets/Textures/Upgrade.png" id="6_1jgqc"]
+[ext_resource type="Texture2D" uid="uid://vp4ksu0mgekk" path="res://Assets/Textures/Mine.png" id="6_2e53y"]
+[ext_resource type="Texture2D" uid="uid://bl8ylpfgvao15" path="res://Assets/Textures/Wood.png" id="7_lw3sa"]
+[ext_resource type="Texture2D" uid="uid://2bl4cl87u25n" path="res://Assets/Textures/Uni.png" id="8_pily0"]
+[ext_resource type="Texture2D" uid="uid://djfv5glldweve" path="res://Assets/Textures/Carryables/Wood.png" id="12_0diyd"]
+[ext_resource type="Texture2D" uid="uid://byweu6g8382cr" path="res://Assets/Textures/Carryables/Stone.png" id="13_kf0f7"]
+[ext_resource type="Texture2D" uid="uid://bmxde2wgxaxvw" path="res://Assets/Textures/Carryables/WoodAmmo.png" id="14_pxdgh"]
+[ext_resource type="Texture2D" uid="uid://chn5nscvqgbrd" path="res://Assets/Textures/projectile.png" id="15_cyte2"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -54,17 +65,61 @@ columns = 2
 [node name="BuildingButton" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons" instance=ExtResource("3_lm05u")]
 layout_mode = 2
 
+[node name="BuildingButton" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons/BuildingButton" index="0"]
+texture_normal = ExtResource("4_mtmmo")
+
+[node name="WoodTexture" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons/BuildingButton" index="5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.626
+anchor_bottom = 0.206
+offset_right = 24.872
+offset_bottom = -1.368
+
+[node name="StoneTexture" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons/BuildingButton" index="6"]
+offset_top = 38.0
+offset_bottom = 50.0
+
+[node name="ResearchTexture" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons/BuildingButton" index="7"]
+offset_left = 94.0
+offset_right = 106.0
+
 [node name="BuildingButton2" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons" instance=ExtResource("3_lm05u")]
 layout_mode = 2
+
+[node name="BuildingButton" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons/BuildingButton2" index="0"]
+texture_normal = ExtResource("5_bownr")
 tower_type = 1
+
+[node name="WoodTexture" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons/BuildingButton2" index="5"]
+offset_left = 94.0
+offset_right = 106.0
+
+[node name="ResearchTexture" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons/BuildingButton2" index="7"]
+offset_left = 94.0
+offset_right = 106.0
 
 [node name="BuildingButton3" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons" instance=ExtResource("3_lm05u")]
 layout_mode = 2
-tower_type = 1
+
+[node name="BuildingButton" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons/BuildingButton3" index="0"]
+texture_normal = ExtResource("5_xlm8l")
+tower_type = 2
 
 [node name="BuildingButton4" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons" instance=ExtResource("3_lm05u")]
 layout_mode = 2
+
+[node name="BuildingButton" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons/BuildingButton4" index="0"]
+texture_normal = ExtResource("6_1jgqc")
 tower_type = 3
+
+[node name="ResearchTexture" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons/BuildingButton4" index="7"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.348
+anchor_bottom = 0.226
+offset_right = 60.456
+offset_bottom = 47.072
 
 [node name="BuildingButtons" type="GridContainer" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer"]
 visible = false
@@ -76,16 +131,27 @@ columns = 2
 [node name="BuildingButton" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons" instance=ExtResource("3_ioc5v")]
 layout_mode = 2
 
+[node name="BuildingButton" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons/BuildingButton" index="0"]
+texture_normal = ExtResource("6_2e53y")
+
 [node name="BuildingButton2" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons" instance=ExtResource("3_ioc5v")]
 layout_mode = 2
+
+[node name="BuildingButton" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons/BuildingButton2" index="0"]
+texture_normal = ExtResource("7_lw3sa")
 building_type = 1
 
 [node name="BuildingButton3" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons" instance=ExtResource("3_ioc5v")]
 layout_mode = 2
+
+[node name="BuildingButton" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons/BuildingButton3" index="0"]
+texture_normal = ExtResource("8_pily0")
 building_type = 3
 
 [node name="BuildingButton4" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons" instance=ExtResource("3_ioc5v")]
 layout_mode = 2
+
+[node name="BuildingButton" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons/BuildingButton4" index="0"]
 building_type = 4
 
 [node name="Button" type="Button" parent="CanvasLayer/HBoxContainer/Panel/HBoxContainer"]
@@ -93,6 +159,95 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme = ExtResource("2_7nkky")
 text = ">"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="HoverInfo" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("12_0diyd")
+stretch_mode = 4
+
+[node name="Wood" type="Label" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "12"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("13_kf0f7")
+stretch_mode = 4
+
+[node name="Stone" type="Label" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "12"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("14_pxdgh")
+stretch_mode = 4
+
+[node name="WoodAmmo" type="Label" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "12"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("15_cyte2")
+stretch_mode = 4
+
+[node name="StoneAmmo" type="Label" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "12"
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+mouse_filter = 2
 
 [node name="MainHud" parent="CanvasLayer" instance=ExtResource("3_x5bow")]
 
@@ -167,3 +322,12 @@ position = Vector2(960, 540)
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/Panel/HBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameOver/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/start" to="." method="_on_start_pressed"]
+
+[editable path="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons/BuildingButton"]
+[editable path="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons/BuildingButton2"]
+[editable path="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons/BuildingButton3"]
+[editable path="CanvasLayer/HBoxContainer/Panel/HBoxContainer/TowerButtons/BuildingButton4"]
+[editable path="CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons/BuildingButton"]
+[editable path="CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons/BuildingButton2"]
+[editable path="CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons/BuildingButton3"]
+[editable path="CanvasLayer/HBoxContainer/Panel/HBoxContainer/BuildingButtons/BuildingButton4"]

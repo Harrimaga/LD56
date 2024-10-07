@@ -1,5 +1,7 @@
 class_name Tile extends Location
 
+@onready var hover_box = preload("res://Scenes/Locations/HoverBox.tscn")
+
 var walkable : bool
 var path : bool
 var hasWood : bool
@@ -10,8 +12,8 @@ var planned_building : Location.BuildingType
 var planned_tower : Location.TowerType
 var building_tower : bool = false
 
-var resources_needed_for_building : Array[int] = [0, 0]
-var total_resources_for_building : Array[int]
+var resources_needed_for_building : Array = [0, 0]
+var total_resources_for_building : Array
 var time_to_build : float
 var is_being_built : bool
 var build_stage : int
@@ -37,6 +39,7 @@ func origin_action(ant : Ant, delta : float) -> bool:
 func build(p_building : Location):
 	building = p_building
 	add_child(building)
+	$Button.visible = false
 	
 func plan():
 	walkable = false
@@ -52,16 +55,16 @@ func plan():
 		task = TaskManager.add_task(null, self, -1, resources_needed_for_building[1], false)
 	
 func plan_building():
-	total_resources_for_building = [0, 9]
-	resources_needed_for_building = total_resources_for_building.duplicate(true)
 	planned_building = GameflowManager.selected_building
+	total_resources_for_building = Location.building_cost[planned_building]
+	resources_needed_for_building = total_resources_for_building.duplicate(true)
 	time_to_build = 20
 	plan()
 	
 func plan_tower():
-	total_resources_for_building = [0, 9]
-	resources_needed_for_building = total_resources_for_building.duplicate(true)
 	planned_tower = GameflowManager.selected_tower
+	total_resources_for_building = Location.tower_cost[planned_tower]
+	resources_needed_for_building = total_resources_for_building.duplicate(true)
 	building_tower = true
 	time_to_build = 10
 	plan()

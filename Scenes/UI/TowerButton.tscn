@@ -1,31 +1,118 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmusp61ec8j40"]
+[gd_scene load_steps=7 format=3 uid="uid://bmusp61ec8j40"]
 
 [ext_resource type="Texture2D" uid="uid://fhdxapdf81dj" path="res://Assets/Textures/Pixel.png" id="1_j1kyu"]
 [ext_resource type="Script" path="res://Scenes/UI/tower_button.gd" id="2_6gat1"]
+[ext_resource type="Texture2D" uid="uid://ep01l4mlpdts" path="res://Assets/Textures/ButtonTextures/ButtonHighlight.png" id="3_g4c4v"]
+[ext_resource type="Texture2D" uid="uid://djfv5glldweve" path="res://Assets/Textures/Carryables/Wood.png" id="3_um6y4"]
+[ext_resource type="Texture2D" uid="uid://byweu6g8382cr" path="res://Assets/Textures/Carryables/Stone.png" id="4_4n575"]
+[ext_resource type="Texture2D" uid="uid://drqkpsg2akqqi" path="res://Assets/Textures/Carryables/Research.png" id="5_wlfob"]
 
-[node name="BuildingButton" type="TextureButton"]
+[node name="ColorRect" type="ColorRect"]
+show_behind_parent = true
 custom_minimum_size = Vector2(128, 128)
-offset_right = 16.0
-offset_bottom = 16.0
-texture_normal = ExtResource("1_j1kyu")
-stretch_mode = 0
-script = ExtResource("2_6gat1")
 
-[node name="Label" type="Label" parent="."]
+[node name="BuildingButton" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("1_j1kyu")
+stretch_mode = 0
+script = ExtResource("2_6gat1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_g4c4v")
+expand_mode = 2
+
+[node name="Wood" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 31.0
+offset_top = -57.0
+offset_right = 71.0
+offset_bottom = -34.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "M"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="." to="." method="_on_pressed"]
+[node name="Stone" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 31.0
+offset_top = -31.0
+offset_right = 71.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "M"
+horizontal_alignment = 1
+
+[node name="Research" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 31.0
+offset_top = -6.0
+offset_right = 71.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "M"
+horizontal_alignment = 1
+
+[node name="WoodTexture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 13.0
+offset_right = 105.0
+offset_bottom = 25.0
+texture = ExtResource("3_um6y4")
+
+[node name="StoneTexture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 39.0
+offset_right = 105.0
+offset_bottom = 51.0
+texture = ExtResource("4_4n575")
+
+[node name="ResearchTexture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 64.0
+offset_right = 105.0
+offset_bottom = 76.0
+texture = ExtResource("5_wlfob")
+
+[connection signal="pressed" from="BuildingButton" to="BuildingButton" method="_on_pressed"]

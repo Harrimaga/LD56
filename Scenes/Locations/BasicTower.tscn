@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://daldt0s3j7pil"]
+[gd_scene load_steps=14 format=3 uid="uid://daldt0s3j7pil"]
 
 [ext_resource type="Texture2D" uid="uid://rohk2xm2yj37" path="res://Assets/Textures/BasicTower.png" id="1_ek6ma"]
 [ext_resource type="Script" path="res://Scenes/Locations/basic_tower.gd" id="2_2ten8"]
+[ext_resource type="PackedScene" uid="uid://c4j72mq6twip3" path="res://Scenes/Locations/HoverBox.tscn" id="3_ulfes"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gw6x5"]
 atlas = ExtResource("1_ek6ma")
@@ -88,3 +89,5 @@ animation = &"Shooting"
 autoplay = "Idle"
 frame = 7
 frame_progress = 1.0
+
+[node name="HoverBox" parent="." instance=ExtResource("3_ulfes")]

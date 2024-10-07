@@ -1,16 +1,35 @@
 extends Control
 
 @onready var cam : Camera2D = $Camera2D
+@onready var hover_info_box : HBoxContainer = $CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo
+@onready var hover_info_resource_label : Array[Label] = [
+	$CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/HBoxContainer/Wood,
+	$CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/HBoxContainer2/Stone,
+	$CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/HBoxContainer3/WoodAmmo,
+	$CanvasLayer/HBoxContainer/Panel/VBoxContainer/HoverInfo/VBoxContainer/HBoxContainer4/StoneAmmo
+]
+
 @onready var ant_scenes = [preload("res://Scenes/Units/BasicAnt.tscn"), 
 						   preload("res://Scenes/Units/FlyingAnt.tscn"), 
 						   preload("res://Scenes/Units/RedAnt.tscn"), 
 						   preload("res://Scenes/Units/RedFlyingAnt.tscn")]
 var gameOver : bool = false
+var hovered_location : Location
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	cam.make_current()
+	GameflowManager.LocationHovered.connect(show_hover_info)
+	GameflowManager.LocationUnhovered.connect(hide_hover_info)
+
+func show_hover_info(location : Location):
+	hovered_location = location
+	hover_info_box.visible = true
 	
+func hide_hover_info(location : Location):
+	if hovered_location != null and hovered_location == location:
+		hover_info_box.visible = false
+		hovered_location = null
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -18,6 +37,12 @@ func _process(delta: float) -> void:
 		cam.position = cam.position.move_toward(Vector2(3200 - 960, 540), 10000 * delta)
 	elif GameflowManager.TD_screen_active and cam.position != Vector2(960, 540):
 		cam.position = cam.position.move_toward(Vector2(960, 540), 10000 * delta)
+		
+	if hovered_location != null:
+		hover_info_resource_label[1].text = str(hovered_location.stockpile[1])
+		hover_info_resource_label[2].text = str(hovered_location.stockpile[2])
+		hover_info_resource_label[3].text = str(hovered_location.stockpile[3])
+		hover_info_resource_label[0].text = str(hovered_location.stockpile[0])
 
 	if GameflowManager.health <= 0 and not gameOver:
 		gameOver = true

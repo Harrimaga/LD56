@@ -39,10 +39,20 @@ animations = [{
 "speed": 40.0
 }]
 
-[node name="RedFlyingAnt" type="AnimatedSprite2D"]
+[node name="RedFlyingAnt" type="AnimatedSprite2D" node_paths=PackedStringArray("inventory_slots")]
 self_modulate = Color(0.980127, 0.234297, 0.218166, 1)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_30mke")
 autoplay = "default"
 frame_progress = 0.859605
 script = ExtResource("1_1pykk")
+inventory_slots = [NodePath("Sprite2D"), NodePath("Sprite2D2"), NodePath("Sprite2D3")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.5, 7.5)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(1.5, 6.5)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(5.5, 7.5)

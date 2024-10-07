@@ -45,9 +45,6 @@ func origin_action(ant : Ant, delta : float):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
-	$RichTextLabel.text = "Stock: %s/%s/%s/%s" % stockpile
-	
 	if stockpile[0] < 25 and !active_tasks[0]:
 		TaskManager.re_add_task(wood_task)
 		active_tasks[0] = true

@@ -29,11 +29,7 @@ func _ready() -> void:
 	
 	#var tower : Location = tower_scene.instantiate()
 	#tower.is_tower = true
-	#build(tower, 4, 22)
-	
-	var uni : Location = GameflowManager.buildings[Location.BuildingType.UNI].instantiate()
-	build(uni, 50, 20)
-	
+	#build(tower, 4, 22)	
 	#var mine : Location = mine_scene.instantiate()
 	#build(mine, 50, 20)
 	#GameflowManager.stockpile_buildings.append(mine)

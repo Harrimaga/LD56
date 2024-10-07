@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4j72mq6twip3"]
+
+[ext_resource type="Script" path="res://Scenes/Locations/hover_box.gd" id="1_3pm1q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ve0kt"]
+size = Vector2(16, 16)
+
+[node name="HoverBox" type="Area2D"]
+script = ExtResource("1_3pm1q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ve0kt")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,5 +1,10 @@
 extends Node
 
+signal BuildingSelected
+signal TowerSelected
+signal LocationHovered(l : Location)
+signal LocationUnhovered(l : Location)
+
 var enemyPath : Array
 var enemyList : Node2D
 var projectiles : Node2D
@@ -13,6 +18,7 @@ var selected_tower : Location.TowerType
 
 var towers : Dictionary = {
 	Location.TowerType.BASIC : preload("res://Scenes/Locations/BasicTower.tscn"),
+	Location.TowerType.FLAK : preload("res://Scenes/Locations/FlakTower.tscn"),
 	Location.TowerType.UPGRADE : null
 }
 

@@ -11,7 +11,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	stockpile_label.text = "Stock: " + str(stockpile[0])
+	pass
 	
 func destination_action(ant : Ant, delta : float):
 	ant.remove_from_inventory()

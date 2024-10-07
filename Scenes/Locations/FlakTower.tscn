@@ -1,0 +1,93 @@
+[gd_scene load_steps=14 format=3 uid="uid://dep1lltlb8ou3"]
+
+[ext_resource type="Script" path="res://Scenes/Locations/flak_tower.gd" id="1_00osw"]
+[ext_resource type="Texture2D" uid="uid://cxr4rrr3xyv86" path="res://Assets/Textures/FlakTower.png" id="1_ckae2"]
+[ext_resource type="PackedScene" uid="uid://c4j72mq6twip3" path="res://Scenes/Locations/HoverBox.tscn" id="3_1qhq2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkf7a"]
+atlas = ExtResource("1_ckae2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4ml2"]
+atlas = ExtResource("1_ckae2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrw7p"]
+atlas = ExtResource("1_ckae2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lx0cl"]
+atlas = ExtResource("1_ckae2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6btkw"]
+atlas = ExtResource("1_ckae2")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bh2uf"]
+atlas = ExtResource("1_ckae2")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cx00t"]
+atlas = ExtResource("1_ckae2")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emnw5"]
+atlas = ExtResource("1_ckae2")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4btj"]
+atlas = ExtResource("1_ckae2")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ioekw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkf7a")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4ml2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrw7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lx0cl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6btkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bh2uf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cx00t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emnw5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4btj")
+}],
+"loop": false,
+"name": &"Shooting",
+"speed": 20.0
+}]
+
+[node name="FlakTower" type="Node2D"]
+script = ExtResource("1_00osw")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ioekw")
+animation = &"Shooting"
+autoplay = "Idle"
+frame = 7
+frame_progress = 1.0
+
+[node name="HoverBox" parent="." instance=ExtResource("3_1qhq2")]

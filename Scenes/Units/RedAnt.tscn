@@ -39,10 +39,20 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="RedAnt" type="AnimatedSprite2D"]
+[node name="RedAnt" type="AnimatedSprite2D" node_paths=PackedStringArray("inventory_slots")]
 self_modulate = Color(0.635977, 0, 0.0973, 1)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ju7c4")
 autoplay = "default"
 frame_progress = 0.995555
 script = ExtResource("1_u85yd")
+inventory_slots = [NodePath("Sprite2D"), NodePath("Sprite2D2"), NodePath("Sprite2D3")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.5, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(2, 0.5)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(0.5, -2.5)

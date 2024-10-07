@@ -3,6 +3,9 @@ class_name Ant extends AnimatedSprite2D
 enum AntType { BASIC, FLYING, RED, REDFLYING }
 enum WorkType { MINE, WOOD, BUILD, TRANSPORT }
 
+var inventory_visuals : Array[Texture2D] = [preload("res://Assets/Textures/Carryables/Wood.png"), preload("res://Assets/Textures/Carryables/Stone.png"), preload("res://Assets/Textures/Carryables/WoodAmmo.png"), preload("res://Assets/Textures/projectile.png")]
+@export var inventory_slots : Array[Sprite2D]
+
 var task : TaskManager.Task
 var path : Array[Vector2]
 var path_pointer : int
@@ -143,6 +146,8 @@ func do_work(delta : float) -> bool:
 func add_to_inventory(resource : CarryingResource) -> bool:
 	if inventory.size() < inventory_max:
 		inventory.append(resource)
+		if resource.type != CarryingResource.ResourceType.BODY:
+			inventory_slots[inventory.size() - 1].texture = inventory_visuals[resource.type]
 		return true
 	return false
 
@@ -151,3 +156,6 @@ func remove_from_inventory():
 		task.destination.move_resource(resource)
 		
 	inventory.clear()
+	
+	for s in inventory_slots:
+		s.texture = null

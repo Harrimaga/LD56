@@ -5,6 +5,21 @@ enum TowerType { BASIC, FLAK, OBSTACLE, UPGRADE }
 
 var stockpile : Array[int] = [0, 0, 0, 0] ## Wood, Stone, WoodAmmo, StoneAmmo
 
+static var building_cost : Dictionary = {
+	BuildingType.MINE : [6, 0, 0],
+	BuildingType.WOOD : [0, 6, 0],
+	BuildingType.STOCKPILE : [10, 10, 0],
+	BuildingType.UNI : [20, 20, 0],
+	BuildingType.AMMO : [8, 8, 0]
+}
+
+static var tower_cost : Dictionary = {
+	TowerType.BASIC : [2, 9, 0],
+	TowerType.FLAK : [15, 4, 0],
+	TowerType.OBSTACLE : [20, 3, 0],
+	TowerType.UPGRADE : [10, 10, 10]
+}
+
 var is_tower : bool
 
 func origin_action(ant : Ant, delta : float):

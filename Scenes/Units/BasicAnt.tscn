@@ -39,10 +39,14 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="BasicAnt" type="AnimatedSprite2D"]
+[node name="BasicAnt" type="AnimatedSprite2D" node_paths=PackedStringArray("inventory_slots")]
 self_modulate = Color(0, 0, 0, 1)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_spahc")
 autoplay = "default"
 frame_progress = 0.753892
 script = ExtResource("2_e886o")
+inventory_slots = [NodePath("Sprite2D")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 0.5)
